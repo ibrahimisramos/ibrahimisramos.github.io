@@ -307,6 +307,8 @@ section {
   padding-bottom: 30px;
 }
 
+
+
 .section-title h2 {
   font-size: 32px;
   font-weight: bold;
@@ -684,45 +686,48 @@ section {
 /*--------------------------------------------------------------
 # Services
 --------------------------------------------------------------*/
-.services .icon-box {
+.experience .icon-box {
   margin-bottom: 20px;
 }
 
-.services .icon {
+.experience .icon {
   float: left;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: 60px;
+  height: 60px;
   background: #149ddd;
   border-radius: 50%;
   transition: 0.5s;
   border: 1px solid #149ddd;
 }
 
-.services .icon i {
+.experience .icon i {
   color: #fff;
   font-size: 24px;
   line-height: 0;
 }
 
-.services .icon-box:hover .icon {
+.experience .icon-box:hover .icon {
   background: #fff;
 }
 
-.services .icon-box:hover .icon i {
+.experience .icon-box:hover .icon i {
   color: #149ddd;
 }
 
-.services .title {
+.experience .title {
   margin-left: 80px;
   font-weight: 700;
   margin-bottom: 15px;
   font-size: 18px;
+  color: #146bdd;
 }
 
-.services .title a {
+
+
+.experience .title a {
   color: #343a40;
 }
 
@@ -733,7 +738,7 @@ section {
 .services .description {
   margin-left: 80px;
   line-height: 24px;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 /*--------------------------------------------------------------
