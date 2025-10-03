@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerology Report Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .section:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.1);
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 1.3em;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .generate-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        #report {
+            margin-top: 40px;
+            display: none;
+        }
+
+        .report-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .report-header h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .report-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .report-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .report-section h3 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 300px;
+            margin: 20px auto;
+        }
+
+        .grid-cell {
+            aspect-ratio: 1;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            background: white;
+            font-size: 18px;
+        }
+
+        .number-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            margin-top: 30px;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(17, 153, 142, 0.4);
+        }
+
+        .description {
+            line-height: 1.8;
+            color: #555;
+            margin: 12px 0;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .key-value {
+            margin: 10px 0;
+        }
+
+        .key-value strong {
+            color: #667eea;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Numerology Report Generator</h1>
+        <p class="subtitle">Discover your life path, destiny, and inner personality through numerology</p>
+        
+        
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">👤</span>
+                Personal Information
+            </div>
+            <div class="input-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" placeholder="Enter your full name as it appears on your birth certificate">
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <span class="section-icon">📅</span>
+                Birth Details
+            </div>
+            <div class="input-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob">
+            </div>
+        </div>
+
+        <button class="generate-btn" onclick="generateReport()">✨ Generate My Numerology Report</button>
+
+        <div id="report"></div>
+    </div>
+
+    <script>
+        const numbersDescription = {
+            "1": {"Good Description": "leadership qualities, independent, strong minded, self sufficient, extremely capable, initiative, individuality, strong personality, crave to be no. 1, rarely accepts defeat, don't give up easily, courageous, innovative, self motivated, talented problem solver", "Not So good Description": "thinking out of the box, can start but usually cannot finish", "Lessons": "become more self-aware; harmonise with others; embrace their individuality; be more diplomatic, patient and tolerant; to lead alongside others, to love and believe in themselves; learn to be less aggressive", "Soul Desire": "Long to become an independent individual who embraces uniqueness and thinks outside the box; have freedom and not repress order to fit into society; motivated by being in charge and initiate projects, don't like being told what to do"},
+            "2": {"Good Description": "diplomatic, considerate, mediator, loving, harmonious, feminine, affectionate, persuasive, supportive, cooperative, intuitive, partnership, diplomacy", "Not So good Description": "moody, jealous, hypersensitive, self-conscious, shy, indecisive, co-dependent, timid", "Lessons": "to love and believe in themselves; to define personal limits and boundaries; trust their own intuition, learn to be independent; to be honest about their feelings; learn to say no; learn not to be too sensitive", "Soul Desire": "Long to be a cooperative peacemaker - promoting peace amongst family, friends, workplace & community. Motivated by relationship, harmony, friendship & love"},
+            "3": {"Good Description": "creative, joy of living, expression, artistic (can be music, art, acting etc), childlike, fun loving, young at heart, friendly, humorous, charismatic, outgoing, gifted with words, imaginative, inspirational, sociable, cheerful", "Not So good Description": "critical, gossipy, superficial, attention seeking, disorganised & irresponsible, loose talk, exaggeration", "Lessons": "overcome self-doubt; eliminate unnecessary dramas; speak their truth; focus, plan & prioritise; be emotionally balanced", "Soul Desire": "You long to express yourself and use your creative and communication skills to bring joy to the world. Your soul wants to be happy, joyful and for others to feel the same as you. You feel that life is meant to be fun and to live life to the fullest. You are motivated by people, conversation, laughter, entertainment and arts."},
+            "4": {"Good Description": "practical, constructive, systematic, hardworking, order & organised, grounded, stable, reliable, focused, persistent, disciplined & determined, takes responsibilities seriously, prefers routine - finds it hard to adapt to change", "Not So good Description": "critical, judgemental, narrow minded, controlling, emotionally closed, stubborn, inflexible, lack of imagination, argumentative, serious", "Lessons": "embrace and surrender to change, make time for fun & relaxation, think outside the box, express emotion and affection, embrace gradual progress", "Soul Desire": "Long to be a dedicated worker who brings stability, organisation and order to your family, workplace and community. Your soul desires to obtain financial, emotional and physical stability so you can live a secure life. You appreciate honesty, truth, practicality and reality over superficial glitz and glamour."},
+            "5": {"Good Description": "freedom loving, adventurer, feels stimulated and challenged, curious, gifted communicator, adaptable, resourceful, clever, magnetic, resilient, multi-talented, quick learner, constructive freedom, sexuality, knowledge, versatile", "Not So good Description": "prone to addiction, carelessness, restlessness, jack of all trades, unreliable, inclined to exaggerate, scattered, irresponsible, intolerant, non-committal, restless, inconsistent", "Lessons": "learn to use their freedom constructively, be patient and tolerant, eliminate dramas, focus and commit, plan and prioritise", "Soul Desire": "Long to be a freedom loving adventurer who lives life to the fullest and makes the most of every experience. Your soul wants to be free - no restrictions, no limitations. You are motivated by new experiences, people, travel, excitement, adventure and variety"},
+            "6": {"Good Description": "responsible, caregiver, nurturing, family & friends come first, self-sacrificing, generous, loving, supportive, wise, creative, conscientious, sympathetic, dependable, unselfish", "Not So good Description": "interfering, critical, bossy, jealous, self-critical, prone to worry, unrealistic, perfectionist, self-righteous, sensitive, must learn to be alone and not being lonely", "Lessons": "to love and appreciate themselves, to balance the giving and receiving, recognise love in many forms, learn to say no, come to terms with imperfections, to be responsible not just for others but for themselves as well, accept, let go and move on, respect others' boundaries", "Soul Desire": "You long to be a responsible caregiver who serves, supports and nurtures others with love. Your soul wants to bring love, beauty and harmony into the world so everyone can feel happy, loved and healed. You are motivated by beauty, family, love, relationships and service to others."},
+            "7": {"Good Description": "seeker of truth, needs alone time to ponder the meaning of life, spends time thinking, relaxing, analysing, studying, meditating, independent, intuitive, analytical, intellectual, deep, philosophical, technically oriented, insightful, inquisitive, spiritual, occult, wisdom", "Not So good Description": "secretive, perfectionist, withdrawn, cynical, emotionally closed, defensive, sceptical, untrusting, intolerant, egoistic", "Lessons": "to discover their own spiritual truth, to open and trust, to have hope and faith, to be patient and tolerant, embrace imperfection, involve themselves in life, to communicate with emotions", "Soul Desire": "You long to seek the truth and discover secrets and mysteries of the universe and find your spiritual truth. You want to get to the bottom of things and to learn what is beneath. You are motivated by wisdom, knowledge and understanding."},
+            "8": {"Good Description": "business-minded, usually self-employed or in position of authority, enjoys challenges and drives to success, organised, fair, dependable, self-motivated, strong, executive ability, authority, hardworking, determined, driven, has the ability to manifest wealth and abundance - needs to balance material and spiritual needs", "Not So good Description": "workaholic, egotistical, intimidating, greedy, prone to worry, domineering, intolerant, impatient, loves recognition, lack of humanitarianism", "Lessons": "to balance material and spiritual worlds, live with honesty and integrity, lead alongside with others, temper power with respect, reclaim their personal power, adopt an attitude of abundance", "Soul Desire": "You long to be a business minded leader who lives by higher ideals and exudes an attitude of abundance. The soul wants to feel balance, empowerment and abundance in personal and work life. You are motivated by responsibility, goals and challenges especially in career. You may prefer to be self-employed and thrive to lead others in achieving a common goal."},
+            "9": {"Good Description": "compassionate, humanitarian, fights for the underdogs, feels responsible to make the world a better place, generous, broadminded, passionate, multi-talented, intuitive, sympathetic, creative, wise, understanding, philanthropic nature, sympathetic, selfless", "Not So good Description": "intolerant, impatient, unforgiving, aggressive, temperamental, intense, dramatic, moody, defensive, hypersensitive, impulsive, careless in money matters, inclination for high living", "Lessons": "to be compassionate and tolerant, express themselves creatively, need to work with family issues, learn to forgive, accept, let go and move on", "Soul Desire": "You long to be a compassionate humanitarian who contributes to making the world a better place. Your soul wants to have every opportunity to promote peace, unity, understanding, forgiveness and universal love. Motivated to serve others."},
+            "11": {"Good Description": "intuition, illumination, inspiration, spirituality, uplifting, charismatic, creative, compassionate, insightful", "Not So good Description": "too sensitive, not practical, jealous, obsessive, egoistic, self-destructive", "Lessons": "to love and believe in themselves; to define their personal limits and boundaries, trust their own intuition, learn to be independent; to be honest about their feelings; learn to say no; learn not to be too sensitive. To understand and utilize their creative power; to live with honesty and integrity; to embrace their spirituality and universal laws; to utilise their Master Number energy; to balance materialism and spirituality; to serve humanity and promote unconditional love; to help raise the collective consciousness of the world.", "Soul Desire": "Long to be an inspirational teacher who raises spiritual awareness and understanding on planet Earth. Soul desires to promote peace, cooperation & harmony and transform others. Through their own transformation, helps others to uplift, empower and inspire them to reach their full potential."},
+            "22": {"Good Description": "turning dreams into reality through practical application; to reach higher level of consciousness, driven to build, create or promote something to benefit the community or humanity as a whole. Visionary, inventive, inspirational, forward thinking, focused, dedicated, idealistic, creative, intuitive, charismatic", "Not So good Description": "controlling, inflexible, workaholic, self-destructive, awkward, stubborn, arrogant, demanding, self-righteous", "Lessons": "embrace and surrender to change, make time for fun & relaxation, think outside the box, express emotion and affection, embrace gradual progress. To understand and utilize their creative power; to live with honesty and integrity; to embrace their spirituality and universal laws; to utilise their Master Number energy; to balance materialism and spirituality; to serve humanity and promote unconditional love; to help raise the collective consciousness of the world.", "Soul Desire": "Long to be a Master Builder who turns dreams into reality through practical application. Desire to build, create, or promote something that benefits humanity and bridges the spiritual and material worlds. Motivated by big projects and challenges that enable you to make a difference in the workplace, community, or world at large."},
+            "33": {"Good Description": "cosmic parents of the world who raise the vibration of humanity through their service, creativity and compassion. Have the ability to heal the masses with their unconditional love, champions for the underdogs. Master number of healing energies. Emotional high achievers who crave approval from others. Creative, joyful, compassionate, intuitive, uplifting, inspirational, healing, loving, family oriented, nurturing", "Not So good Description": "perfectionist, critical, self-righteous, people pleasing, judgemental, intolerant, bossy, self-critical, interfering, overachieving", "Lessons": "to love and appreciate themselves, to balance the giving and receiving, recognise love in many forms, learn to say no, come to terms with imperfections, to be responsible not just for others but for themselves as well, accept, let go and move on, respect others' boundaries", "Soul Desire": "To understand and utilize their creative power; to live with honesty and integrity, to embrace their spirituality and universal laws; to utilise their Master Number energy, to balance materialism and spirituality; to serve humanity and promote unconditional love, to help raise the collective consciousness of the world."}
+        };
+
+        const numbers = {
+            "1": {"1": "For people with only one Number 1 in their charts, it's extremely difficult to express their innermost feelings and desires. They are unable to convey their true feelings, even though they may not necessarily be bad at communication at other levels. It will also be hard for them to be able to appreciate other person's point of view.", "11": "Comparatively much balanced in their approach, people with two Number 1s in their charts find it easy to communicate and express their inner feelings. They have an ability to look at life in an unbiased manner and are better judges of other people's point of views. This is also considered as the best quantity of Number 1s to have.", "111": "Such people may have a duality when it comes to their personality. But one thing is for sure that such people are outgoing and entertaining (many famous entertainers have this combo). Coming back to the ambivalence - people with three Number 1s may either be complete chatterboxes or they may be quiet and introspective. The truth is that they are actually both, and their personality manifestation depends on situation.", "1111": "Sensitive and caring, such people are frequently misunderstood, as they tend to be quite inexpressive. Verbal expression is not one of their better qualities, because of which they tend to be misfits among groups and find it hard to relax and simply let go.", "Many": "Too many Number 1s in the chart isn't a very good indication. An absence of ability to verbally express oneself is stark in these natives, and they may even face enormous difficulty on account of this. They also stand a high chance of being misunderstood due to this inability. Such people, however, may be very creative and may use such forms for inner-expression like music, dance or painting."},
+            "2": {"2": "Such people tend to be quite sensitive and intuitive but can also be easily hurt. Blessed with an uncanny ability and discretion to see through other people's insincerity, these people are naturally good judges of others.", "22": "Such people who have two 2s in their charts are highly intelligent and sensitive. Born with a superb intuition, they end up benefiting immensely from this prowess of theirs. Very much like the people with one 2 in their charts, these people also tend to be masters at detecting and assessing the motivations of others.", "222": "Such people tend to go overboard with their sensitive side, may experience premonitions, may easily get hurt and may also give others an impression of being aloof. Prone to living in a world of their own, they loathe socialising and spending time with others as they are afraid of getting hurt.", "2222": "Impatient and rash, these people have a tendency to over-react to small problems. Extremely sensitive introverts, they prefer to spend time by themselves, rather than risk getting hurt because of others.", "Many": "Born with an incredible sensitivity, such people find it hard to deal with their own self doubt and the world at large. This kind of a chart is a rarity, but it's actually a good thing, as more the number of 2s, more difficult it is for the native to adjust. Lack of self confidence and trust in others are also the marked qualities of such people."},
+            "3": {"3": "An excellent memory and a marked creative streak are the prominent gains of people who possess one Number 3 in their Numerology chart. A positive, yet a practical, realistic approach towards the attainment of their goals and an honest optimism towards life set them apart from others, and even make them a source of inspiration for others.", "33": "Mentally alert and creative, such people are quite imaginative and love their eccentricity and a crazy streak that allows them to be unconventional. Giving the native an ability to express well in words, this combination allows people to excel in creative and literary fields, and many such people may be writers.", "333": "Three 3s may be counted as too many, for they make the native extra-imaginative, so much so that the native may remain self-absorbed and prefer to live in his/her own imagination. Such people appear as aloof and remote and find it hard to relate to others and usually are bad listeners.", "3333": "This rarely found combination makes the natives extremely impractical, timid, fearful and super dreamy. The imagination of these people tends to be so strong that it is difficult for them to step out of it into the real world and confront the day-to-day chores and demands of routine.", "Many": "Too many 3s in the chart may indicate a scattered brain... not grounded."},
+            "4": {"4": "People with this combination in their Numerology chart tend to be practical, earthy and basically good with manual work. They tend to enjoy 'hands-on' approach and such vocations. A more than practically needed emphasis on theories and imagination makes them impatient. The digit also relates to work like handicrafts and pottery, and even instrumental music. Such people also are good organizers.", "44": "Born with excellent organizational skills, such people love the task of initiating a task and carrying it to the end. Accurate, conscientious and prim, these people make great managers, and may even be sculptors or someone great at origami. However they may be inclined to become overly involved in superficial, physical and materialistic pursuits at the expense of fun or spiritual pursuits.", "444": "Almost exclusively given to material, practical and physical pursuits, people with such a combination find it hard to attend to any other sphere of their lives. Organized to the T, these people are self-disciplined and hard working. Their abilities may be apparent to others, but they themselves may frequently be unable to realise their natural talents.", "4444": "An extremely rare placement, it is rarely found. Such people, if any, are totally immersed in physical activities. Anything to do with intellectual or spiritual domain is beyond their understanding. They also possess enormous capability at any task that needs working using hands.", "Many": "Too many 4s may indicate being overworked and a workaholic."},
+            "5": {"5": "Emotionally stable and balanced, people with one Number 5 in their chart find it easy to motivate and inspire others. Their compassionate and caring nature allows them to positively reinforce others in a manner that makes them achieve and perform much more than they otherwise would have.", "55": "Intense, emotional and determined, people with two 5s in their Numerology chart tend to be extremely enthusiastic and driven about whatever they do or possess. This generally makes them passionate, and sometimes even obsessed. This may lead to certain regrettable situations and outbursts.", "555": "Loving adventure, these people really need to channelise this vast reserve in the right direction. They tend to speak without contemplating, which may put them in tricky situations, wherein they might have hurt others unintentionally. They love any passionate activity and enjoy change.", "5555": "This combination is possible only three times in a span of a century (100 years). Hence, this is obvious that people with this combination are very rare. It's a dangerous combination to have, as it makes one prone to accidents.", "Many": "Too many 5s - best to marry later. They cannot settle at young age: wants to enjoy life, take risks. Watch out for vices and compulsive behaviours."},
+            "6": {"6": "People with one 6 in their Numerology chart have a great filial, familial and home love. Obviously, they make excellent parents and equally good children. They love handling their domestic responsibilities, and they also have a good amount of creative potential. Most often, they are the people in their families to whom everyone wants to come to when things go awry.", "66": "Inclined towards over-anxiety and fretting over even minutest details, as far as the family and home are concerned, people with two 6s in their chart tend to have a certain nervous streak about them. They need more mental rest than others, and need to relax more often. They have a great love for aesthetics.", "666": "Over-protective and possessive of their loved ones, people with three 6s tend to be borderline cases of extreme restlessness and stress. They also have a tendency to become negative, and thus they need constant motivation and encouragement. Blessed with considerable creative potential.", "6666": "Very creative and extremely driven, people with this combination are quite weak and vulnerable when it comes to the emotional front. Almost everything has the power to affect them, which makes adjusting to everyday life very difficult for them.", "Many": "Too many 6s - too self-sacrificial, tend to blame themselves if things go wrong."},
+            "7": {"7": "Such people are likely to learn the most important lessons of their life from either loss of love, possessions or health. As they learn from these experiences, they become more mature and interested in metaphysical or spiritual pursuits, along the way.", "77": "Growth in knowledge and wisdom is achieved mostly by losing love, health or money by these people. Extremely analytical, these people are excellent at solving intricate, cryptic or technical problems. The losses they meet with make them more spiritual and pique their interest in psychic or occult practices.", "777": "Strong and silent, people with three Number 7s in their chart often lead sad lives, which is a result of certain major disappointments and setbacks they end up suffering in their lives. These misfortunes may be in the area of love, health and finances. However, these people tend to develop enormous reserves of inner strength along the way.", "7777": "There are only three days in a century when such an occurrence happens. And it's a good thing, for this combination is not a lucky one. Fate has a strange and sad way of teaching almost all lessons of life to these people.", "Many": "Spent many lifetimes looking for spiritual truth. Need to trust again."},
+            "8": {"8": "Methodical, fastidious and immaculate about details, people with one Number 8 in their Numerology chart have restless, active minds that crave mental challenges. However, on the flip-side, these people often find it difficult to finish the tasks they, very enthusiastically, had initiated.", "88": "Very perceptive, observant and painstakingly careful of details, these people prefer to learn everything through experience, rather than trusting on others or the available reference. This is a good thing, but only to an extent. An excess of this trait makes them rigid and inflexible.", "888": "Rigid and restless, especially during their early years, people with three 8s tend to become more stable by their middle age, approximately around forty. That is when they progress at the maximum possible pace. This is also the time when they develop a better perspective and purpose in life.", "8888": "Variety is the spice of life! This is the mantra by which these people live their lives. Never averse to change, they, in fact, cultivate variations and distortions in regular patterns of life. Restless beyond belief, it is vital for them to find their true calling and purpose in life.", "Many": "2x 8s and above - very frugal with money."},
+            "9": {"9": "Possessing a strong, marked desire for self-improvement, people with one 9 in their Numerology chart are quite ambitious. All the people alive today have at least one 9, and it's undeniably true that we all have much more humanity inside us than we tend to express.", "99": "Idealistic, intelligent and astute, these people are quite likely to be critical of others. And many a times they can be blunt and derogatory. Since they themselves are gifted in the intelligence department, they might even look down upon others. They desperately need to cultivate the ability to shun their personal biases and gel with others.", "999": "Virtuous, idealistic, brilliant, mentally astute and caring, people with three 9s in their charts tend to get better with age. They become more mature and happier in life, once they understand how to make the best use of their capabilities.", "9999": "Such people are gifted when it comes to mental brilliance and intelligence, but they are quite vulnerable and find it extremely difficult to adjust to the everyday, mundane worldly matters. These people frequently retreat to their own dream, imaginary worlds. But deep inside them they have immense power and energy.", "Many": "Too many 9s - has been reincarnated many times, here to help raise earth vibrations and is very sacrificial. Need to take care of one's health."}
+        };
+
+        const missingNumbersDescription = {
+            "1": "People with a missing number 1 will find it difficult to express themselves and their individuality. They will, most likely, not have any major issues with ego or self-pride, and may spend most of their time helping and nurturing others. Lack of leadership; must be more willing to take initiative.",
+            "2": "Those with missing Number 2 indicates a lack of sensitivity and intuition in the native's personality. Such people also possess a marked impatient and unpunctual streak. They may be too much into justifications and clarifications for their actions. Does not feel as much compassion as others. Missing 2s are very masculine and find it difficult to cooperate with others.",
+            "3": "People without Number 3 in their charts may suffer from a lack of self-confidence, and may also find it tough to express themselves on most occasions. Creative blocks and does not know how to enjoy themselves. Lack of cheer and joy in life; no happiness. Needs to go into inner child self and find that life is fun and full of surprises.",
+            "4": "Such people lack organizational skills, and that is the most important quality they need to cultivate. Working in set routines with strict norms is a major issue for them, and they may turn up late usually. Strong dislike for mundane, boring tasks. Missing 4s have difficulties with completing tasks and do not pay careful attention to details; no management skills; can start, cannot finish.",
+            "5": "Setting defined, targeted goals is a major issue for these people. They lack drive and versatility. Usually not great at multi-tasking, they require external sources of motivation and reinforcement to keep them on the right track. Missing 5s are confused in their life directions even though may have many opportunities presented to them. No determination and not self motivated.",
+            "6": "People without a 6 in their charts tend to hide their innermost feelings from others. They also lack the quality of being selfless, even in their closest relationships. Due to which they find it difficult to relate to others, and may even have troubles with one of their parents. Relationship issues: Lack of assistance from others. As there is lack of sense of family responsibilities, will have difficult marriage that ends in divorce or may choose not to get married.",
+            "7": "Maybe inconsiderate and insensitive when it comes to others' feelings, such people live a self-immersed life. They are usually disorganized in everyday life and tend to remain aloof from anything remotely spiritual or metaphysical. They are not independent and self-sufficient on most occasions, and hate being left on their own. Distrust anything that is metaphysical. They need proof. Fear of being alone.",
+            "8": "8 is a practical number. People without this number are generally bad at handling their financial affairs. Plus, they lack motivation and drive, and may even be prone to leaving/abandoning their tasks mid-way. Quite impulsive and careless, they need to think before they act. Money one pocket in another pocket out - cannot hold money. No business acumen; Careless with money.",
+            "9": "Everyone born in the twentieth century possesses this number, but from twenty first century onwards there will be many people who will not have it in their charts. Such people will tend to be insensitive and shall overlook the needs of others. Detached and oblivious to others, these people need to develop that much-needed streak of humanitarianism. Heartless; no compassion."
+        };
+
+        let listNumbers = ["", "", "", "", "", "", "", "", "", ""];
+        let missingNumbers = [];
+
+        function charPosition(letter) {
+            return ((letter.charCodeAt(0) - 97) % 9) + 1;
+        }
+
+        function isVowel(c) {
+            return ['a', 'e', 'i', 'o', 'u'].includes(c);
+        }
+
+        function isConsonant(c) {
+            return /^[bcdfghjklmnpqrstvwxyz]$/.test(c);
+        }
+
+        function getReduced(number) {
+            let val = 0;
+            let numList = String(number).split('').map(Number);
+            for (let n of numList) {
+                val += n;
+            }
+            if (val >= 10 && ![11, 22, 33].includes(val)) {
+                return getReduced(val);
+            }
+            return val;
+        }
+
+        function getReducedNumber(birthSum) {
+            const specialNumbers = [11, 22, 33];
+            let num = String(birthSum) + "|";
+            while (String(birthSum).length != 1) {
+                if (specialNumbers.includes(parseInt(birthSum))) {
+                    num += String(birthSum);
+                }
+                let temp = 0;
+                for (let i of String(birthSum)) {
+                    temp += parseInt(i);
+                }
+                birthSum = String(temp);
+            }
+            return num + "|" + String(birthSum);
+        }
+
+        function updateListNumbers(i) {
+            let pos = charPosition(i);
+            listNumbers[pos] = listNumbers[pos] + String(pos);
+        }
+
+        function getScoresIndividual(name) {
+            let scoreVowels = 0;
+            let scoreConst = 0;
+            for (let n of name.replace(/\s/g, '').toLowerCase()) {
+                if (isConsonant(n)) {
+                    scoreConst += charPosition(n);
+                } else if (isVowel(n)) {
+                    scoreVowels += charPosition(n);
+                }
+            }
+            return [getReducedNumber(scoreVowels), getReducedNumber(scoreConst)];
+        }
+
+        function fullNameScore(fullName) {
+            let score = 0;
+            for (let i of fullName.replace(/\s/g, '').toLowerCase()) {
+                score += charPosition(i);
+                updateListNumbers(i);
+            }
+            return getReducedNumber(score);
+        }
+
+        function getLifePathScore(day, month, year) {
+            let score = getReduced(day) + getReduced(month);
+            for (let digit of String(year)) {
+                score += parseInt(digit);
+            }
+            score = getReduced(score);
+            return score;
+        }
+
+        function getDetailsOutListNumbers(number) {
+            for (let digit of String(number)) {
+                let d = parseInt(digit);
+                if (d > 0) {
+                    listNumbers[d] = listNumbers[d] + String(d);
+                }
+            }
+        }
+
+        function getLifePath(date) {
+            let personality = getReduced(date.getDate());
+            let lifePathNum = getLifePathScore(date.getDate(), date.getMonth() + 1, date.getFullYear());
+            getDetailsOutListNumbers(date.getFullYear());
+            getDetailsOutListNumbers(date.getMonth() + 1);
+            getDetailsOutListNumbers(date.getDate());
+            getDetailsOutListNumbers(lifePathNum);
+            return [lifePathNum, personality];
+        }
+
+        function getRelatedNumbersFromName(name) {
+            let destinyNum = fullNameScore(name);
+            let [innerPersonalityNum, wantToBePerceivedNum] = getScoresIndividual(name);
+            let finalDestiny = destinyNum.split('|').pop();
+            getDetailsOutListNumbers(finalDestiny);
+            return [destinyNum, innerPersonalityNum, wantToBePerceivedNum];
+        }
+
+        function getPersonalYear(birthDate) {
+            let today = new Date();
+            let thisYearBday = String(birthDate.getDate()) + String(birthDate.getMonth() + 1) + String(today.getFullYear());
+            return getReduced(thisYearBday);
+        }
+
+        function generateReport() {
+            listNumbers = ["", "", "", "", "", "", "", "", "", ""];
+            missingNumbers = [];
+
+            let name = document.getElementById('name').value;
+            let dobInput = document.getElementById('dob').value;
+
+            if (!name || !dobInput) {
+                alert('Please enter both name and date of birth');
+                return;
+            }
+
+            let dob = new Date(dobInput);
+            let [destinyNum, innerPersonalityNum, wantToBePerceivedNum] = getRelatedNumbersFromName(name);
+            let [lifePathNum, personality] = getLifePath(dob);
+            let personalYearNum = getPersonalYear(dob);
+
+            for (let i = 1; i <= 9; i++) {
+                if (listNumbers[i].length === 0) {
+                    missingNumbers.push(String(i));
+                }
+            }
+
+            displayReport(name, dobInput, lifePathNum, destinyNum, innerPersonalityNum, wantToBePerceivedNum, personality, personalYearNum);
+            
+            // Save anonymous data to Google Sheets
+            saveAnonymousData(dob.getFullYear(), listNumbers.slice(1), lifePathNum, personality);
+        }
+
+        async function saveAnonymousData(birthYear, numbersList, lifePathNum, personalityNum) {
+            // REPLACE THIS URL with your Google Apps Script Web App URL
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8HV1K24ooZ6uJDK9LKnnuvwm7lLWvgy2m5fcStHObg7VXqfPZSmWQZZIegVk1H_Ff/exec';
+            
+            const data = {
+                timestamp: new Date().toISOString(),
+                birthYear: birthYear,
+                numbers: numbersList.join('|'),
+                lifePathNumber: lifePathNum,
+                personalityNumber: personalityNum
+            };
+            
+            try {
+                await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                console.log('Data saved successfully');
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
+        }
+
+        function displayReport(name, dob, lifePathNum, destinyNum, innerPersonalityNum, wantToBePerceivedNum, personality, personalYearNum) {
+            let finalDestiny = destinyNum.split('|').pop();
+            let finalInner = innerPersonalityNum.split('|').pop();
+            let finalWant = wantToBePerceivedNum.split('|').pop();
+
+            let report = `
+                <div class="report-header">
+                    <h2>Numerology Report for ${name}</h2>
+                    <p>Date of Birth: ${dob}</p>
+                </div>
+
+                <div class="report-section">
+                    <h2>Your Core Numbers</h2>
+                    <div class="key-value"><strong>Life Path Number:</strong> <span class="number-badge">${lifePathNum}</span></div>
+                    <div class="key-value"><strong>Personality Number:</strong> <span class="number-badge">${personality}</span></div>
+                    <div class="key-value"><strong>Destiny Number:</strong> <span class="number-badge">${finalDestiny}</span></div>
+                    <div class="key-value"><strong>Soul Desire Number:</strong> <span class="number-badge">${finalInner}</span></div>
+                    <div class="key-value"><strong>Outer Personality Number:</strong> <span class="number-badge">${finalWant}</span></div>
+                    <div class="key-value"><strong>Personal Year (${new Date().getFullYear()}):</strong> <span class="number-badge">${personalYearNum}</span></div>
+                </div>
+
+                <div class="report-section">
+                    <h2>Your Numerology Grid</h2>
+                    <div class="grid-container">
+                        <div class="grid-cell">${listNumbers[3] || ''}</div>
+                        <div class="grid-cell">${listNumbers[6] || ''}</div>
+                        <div class="grid-cell">${listNumbers[9] || ''}</div>
+                        <div class="grid-cell">${listNumbers[2] || ''}</div>
+                        <div class="grid-cell">${listNumbers[5] || ''}</div>
+                        <div class="grid-cell">${listNumbers[8] || ''}</div>
+                        <div class="grid-cell">${listNumbers[1] || ''}</div>
+                        <div class="grid-cell">${listNumbers[4] || ''}</div>
+                        <div class="grid-cell">${listNumbers[7] || ''}</div>
+                    </div>
+                    ${listNumbers[1].length > listNumbers[2].length ? '<div class="highlight">You might be more masculine than feminine in energy</div>' : ''}
+                    ${listNumbers[2].length > listNumbers[1].length ? '<div class="highlight">You might be more feminine than masculine in energy</div>' : ''}
+                    ${listNumbers[1].length === listNumbers[2].length ? '<div class="highlight">You are equally masculine and feminine in energy</div>' : ''}
+                    ${listNumbers[9].length >= 5 ? '<div class="highlight">You might be an old soul - you have been incarnated ' + listNumbers[9].length + ' times</div>' : ''}
+                </div>
+
+                <div class="report-section">
+                    <h2>Life Path Number ${lifePathNum}</h2>
+                    <p class="description"><em>What you are naturally good at and your life's purpose</em></p>
+                    <h3>Positive Traits:</h3>
+                    <p class="description">${numbersDescription[String(lifePathNum)]['Good Description']}</p>
+                    <h3>Challenges:</h3>
+                    <p class="description">${numbersDescription[String(lifePathNum)]['Not So good Description']}</p>
+                    <h3>Life Lessons:</h3>
+                    <p class="description">${numbersDescription[String(lifePathNum)]['Lessons']}</p>
+                    <div class="info-box">
+                        <strong>Soul Desire:</strong> ${numbersDescription[String(lifePathNum)]['Soul Desire']}
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h2>Personality Number ${personality}</h2>
+                    <p class="description"><em>How you are as a person</em></p>
+                    <h3>Positive Traits:</h3>
+                    <p class="description">${numbersDescription[String(personality)]['Good Description']}</p>
+                    <h3>Challenges:</h3>
+                    <p class="description">${numbersDescription[String(personality)]['Not So good Description']}</p>
+                    <h3>Life Lessons:</h3>
+                    <p class="description">${numbersDescription[String(personality)]['Lessons']}</p>
+                </div>
+
+                <div class="report-section">
+                    <h2>Destiny Number ${finalDestiny}</h2>
+                    <p class="description"><em>What you are destined to learn in this lifetime</em></p>
+                    <h3>Positive Traits:</h3>
+                    <p class="description">${numbersDescription[String(finalDestiny)]['Good Description']}</p>
+                    <h3>Life Lessons:</h3>
+                    <p class="description">${numbersDescription[String(finalDestiny)]['Lessons']}</p>
+                </div>
+
+                <div class="report-section">
+                    <h2>Soul Desire Number ${finalInner}</h2>
+                    <p class="description"><em>Your inner self and heart's deepest desires</em></p>
+                    <div class="info-box">
+                        ${numbersDescription[String(finalInner)]['Soul Desire']}
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h2>Numbers in Your Chart</h2>
+            `;
+
+            for (let i = 1; i <= 9; i++) {
+                if (listNumbers[i].length > 0) {
+                    let count = listNumbers[i].length;
+                    let key = listNumbers[i];
+                    let description = '';
+                    
+                    if (numbers[String(i)][key]) {
+                        description = numbers[String(i)][key];
+                    } else if (count > 4 && numbers[String(i)]['Many']) {
+                        description = numbers[String(i)]['Many'];
+                    }
+                    
+                    if (description) {
+                        report += `
+                            <h3>Number ${i} (appears ${count} time${count > 1 ? 's' : ''})</h3>
+                            <p class="description">${description}</p>
+                        `;
+                    }
+                }
+            }
+
+            report += `</div>`;
+
+            if (missingNumbers.length > 0) {
+                report += `
+                    <div class="report-section">
+                        <h2>Missing Numbers</h2>
+                        <p class="description">These numbers are absent from your chart and represent areas for growth and development:</p>
+                `;
+                for (let num of missingNumbers) {
+                    report += `
+                        <h3>Missing Number ${num}</h3>
+                        <p class="description">${missingNumbersDescription[num]}</p>
+                    `;
+                }
+                report += `</div>`;
+            }
+
+            report += `
+                <div class="report-section">
+                    <h2>Personal Year ${personalYearNum} (${new Date().getFullYear()})</h2>
+                    <p class="description"><em>The energy and themes for your current year</em></p>
+                    <h3>Focus for This Year:</h3>
+                    <p class="description">${numbersDescription[String(personalYearNum)]['Lessons']}</p>
+                </div>
+                
+                <button class="download-btn" onclick="downloadPDF()">Download PDF Report</button>
+            `;
+
+            document.getElementById('report').innerHTML = report;
+            document.getElementById('report').style.display = 'block';
+            document.getElementById('report').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            let name = document.getElementById('name').value;
+            let dobInput = document.getElementById('dob').value;
+            let dob = new Date(dobInput);
+            
+            // Reset calculations for PDF
+            listNumbers = ["", "", "", "", "", "", "", "", "", ""];
+            missingNumbers = [];
+            
+            let [destinyNum, innerPersonalityNum, wantToBePerceivedNum] = getRelatedNumbersFromName(name);
+            let [lifePathNum, personality] = getLifePath(dob);
+            let personalYearNum = getPersonalYear(dob);
+            
+            for (let i = 1; i <= 9; i++) {
+                if (listNumbers[i].length === 0) {
+                    missingNumbers.push(String(i));
+                }
+            }
+            
+            let finalDestiny = destinyNum.split('|').pop();
+            let finalInner = innerPersonalityNum.split('|').pop();
+            let finalWant = wantToBePerceivedNum.split('|').pop();
+            
+            let y = 20;
+            const pageHeight = 280;
+            const margin = 20;
+            const maxWidth = 170;
+            
+            // Color scheme
+            const colors = {
+                primary: [102, 126, 234],
+                secondary: [118, 75, 162],
+                accent: [56, 239, 125],
+                dark: [51, 51, 51],
+                light: [245, 245, 245],
+                warning: [255, 193, 7]
+            };
+            
+            // Helper function to add new page if needed
+            function checkPageBreak(needed = 20) {
+                if (y + needed > pageHeight) {
+                    doc.addPage();
+                    y = 20;
+                    return true;
+                }
+                return false;
+            }
+            
+            // Helper function to wrap text
+            function addWrappedText(text, x, yPos, maxW, lineHeight = 6) {
+                const lines = doc.splitTextToSize(text, maxW);
+                doc.text(lines, x, yPos);
+                return lines.length * lineHeight;
+            }
+            
+            // Helper to add section header
+            function addSectionHeader(title, addSpace = true) {
+                if (addSpace) checkPageBreak(30);
+                doc.setFillColor(...colors.primary);
+                doc.rect(margin - 5, y - 5, 180, 12, 'F');
+                doc.setTextColor(255, 255, 255);
+                doc.setFontSize(14);
+                doc.setFont(undefined, 'bold');
+                doc.text(title, margin, y + 3);
+                doc.setTextColor(...colors.dark);
+                y += 15;
+            }
+            
+            // Helper to add subsection
+            function addSubsection(title) {
+                checkPageBreak(20);
+                doc.setFontSize(11);
+                doc.setFont(undefined, 'bold');
+                doc.setTextColor(...colors.secondary);
+                doc.text(title, margin, y);
+                doc.setTextColor(...colors.dark);
+                y += 7;
+            }
+            
+            // Helper to add colored box
+            function addInfoBox(text, bgColor = colors.light) {
+                checkPageBreak(25);
+                const boxHeight = 10 + (doc.splitTextToSize(text, maxWidth - 10).length * 5);
+                doc.setFillColor(...bgColor);
+                doc.roundedRect(margin, y, maxWidth, boxHeight, 3, 3, 'F');
+                doc.setFontSize(9);
+                doc.setFont(undefined, 'normal');
+                y += 7;
+                y += addWrappedText(text, margin + 5, y, maxWidth - 10, 5);
+                y += 8;
+            }
+            
+            // Title
+            doc.setFontSize(20);
+            doc.setFont(undefined, 'bold');
+            doc.text('Personalised Numerology Report', 105, y, { align: 'center' });
+            y += 15;
+            
+            // Calculation of name
+            doc.setFontSize(16);
+            doc.text('Calculation of Name', margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            let calculation = '';
+            for (let i of name.replace(/\s/g, '').toLowerCase()) {
+                if (isConsonant(i) || isVowel(i)) {
+                    calculation += `${i} - ${charPosition(i)}\n`;
+                }
+            }
+            y += addWrappedText(calculation, margin, y, maxWidth);
+            y += 5;
+            
+            doc.setFont(undefined, 'bold');
+            doc.text(`Sum of name digits = ${destinyNum}`, margin, y);
+            y += 15;
+            
+            checkPageBreak(40);
+            
+            // Summary
+            doc.setFontSize(16);
+            doc.text('Summary:', margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text(`This report is for ${name} with date of birth ${dobInput}`, margin, y);
+            y += 10;
+            
+            doc.text('List of numbers:', margin, y);
+            y += 7;
+            doc.text(listNumbers.slice(1).join(' '), margin, y);
+            y += 10;
+            
+            doc.text('Missing Numbers:', margin, y);
+            y += 7;
+            doc.text(missingNumbers.join(' '), margin, y);
+            y += 15;
+            
+            // Grid
+            checkPageBreak(50);
+            const gridX = margin;
+            const gridY = y;
+            const cellSize = 20;
+            
+            // Draw grid
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    doc.rect(gridX + col * cellSize, gridY + row * cellSize, cellSize, cellSize);
+                }
+            }
+            
+            // Fill grid values
+            doc.setFontSize(8);
+            const gridValues = [
+                [listNumbers[3], listNumbers[6], listNumbers[9]],
+                [listNumbers[2], listNumbers[5], listNumbers[8]],
+                [listNumbers[1], listNumbers[4], listNumbers[7]]
+            ];
+            
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    const value = gridValues[row][col] || '';
+                    doc.text(value, gridX + col * cellSize + 10, gridY + row * cellSize + 12, { align: 'center' });
+                }
+            }
+            
+            y += 70;
+            doc.setFontSize(10);
+            
+            if (listNumbers[1].length > listNumbers[2].length) {
+                doc.text('You might be more masculine than feminine', margin, y);
+                y += 7;
+            } else if (listNumbers[2].length > listNumbers[1].length) {
+                doc.text('You might be more feminine than masculine', margin, y);
+                y += 7;
+            } else {
+                doc.text('You are equally masculine and feminine', margin, y);
+                y += 7;
+            }
+            
+            if (listNumbers[9].length >= 5) {
+                doc.text('You might be an old soul', margin, y);
+                y += 7;
+            }
+            
+            doc.text(`The number of times you have been incarnated is: ${listNumbers[9].length}`, margin, y);
+            y += 15;
+            
+            checkPageBreak();
+            
+            // How you are as a person
+            doc.addPage();
+            y = 20;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text(`How you are as a person: ${personality}`, margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            for (let [key, value] of Object.entries(numbersDescription[String(personality)])) {
+                checkPageBreak(30);
+                doc.setFont(undefined, 'bold');
+                doc.text(key + ':', margin, y);
+                y += 7;
+                doc.setFont(undefined, 'normal');
+                y += addWrappedText(value, margin, y, maxWidth);
+                y += 5;
+            }
+            
+            // Life Path
+            checkPageBreak(40);
+            y += 5;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text(`Life Path (what you are naturally good at): ${lifePathNum}`, margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            for (let [key, value] of Object.entries(numbersDescription[String(lifePathNum)])) {
+                checkPageBreak(30);
+                doc.setFont(undefined, 'bold');
+                doc.text(key + ':', margin, y);
+                y += 7;
+                doc.setFont(undefined, 'normal');
+                y += addWrappedText(value, margin, y, maxWidth);
+                y += 5;
+            }
+            
+            // Destiny Number
+            checkPageBreak(40);
+            y += 5;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text(`Destiny Number (what you are destined to learn): ${destinyNum}`, margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            for (let [key, value] of Object.entries(numbersDescription[String(finalDestiny)])) {
+                if (value && value !== 'NIL' && value !== '') {
+                    checkPageBreak(30);
+                    doc.setFont(undefined, 'bold');
+                    doc.text(key + ':', margin, y);
+                    y += 7;
+                    doc.setFont(undefined, 'normal');
+                    y += addWrappedText(value, margin, y, maxWidth);
+                    y += 5;
+                }
+            }
+            
+            // Inner Personality
+            checkPageBreak(40);
+            y += 5;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text(`Inner Personality (Your inner self): ${innerPersonalityNum}`, margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            doc.text('Soul Desire:', margin, y);
+            y += 7;
+            doc.setFont(undefined, 'normal');
+            y += addWrappedText(numbersDescription[String(finalInner)]['Soul Desire'], margin, y, maxWidth);
+            y += 5;
+            
+            // Want to be perceived as
+            checkPageBreak(40);
+            y += 5;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text(`Want to be perceived as: ${wantToBePerceivedNum}`, margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            for (let [key, value] of Object.entries(numbersDescription[String(finalWant)])) {
+                checkPageBreak(30);
+                doc.setFont(undefined, 'bold');
+                doc.text(key + ':', margin, y);
+                y += 7;
+                doc.setFont(undefined, 'normal');
+                y += addWrappedText(value, margin, y, maxWidth);
+                y += 5;
+            }
+            
+            // Personalised result
+            doc.addPage();
+            y = 20;
+            doc.setFontSize(16);
+            doc.setFont(undefined, 'bold');
+            doc.text('Personalised Result:', margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            for (let i = 1; i <= 9; i++) {
+                if (listNumbers[i].length > 0) {
+                    checkPageBreak(40);
+                    let count = listNumbers[i].length;
+                    let key = listNumbers[i];
+                    let description = '';
+                    
+                    doc.setFont(undefined, 'bold');
+                    doc.text(`You have ${count} of ${i}`, margin, y);
+                    y += 7;
+                    
+                    if (numbers[String(i)][key]) {
+                        description = numbers[String(i)][key];
+                    } else if (count > 4 && numbers[String(i)]['Many']) {
+                        description = numbers[String(i)]['Many'];
+                        doc.text(`(More than 4x so getting remarks of many ${i})`, margin, y);
+                        y += 7;
+                    }
+                    
+                    if (description) {
+                        doc.setFont(undefined, 'normal');
+                        y += addWrappedText(description, margin, y, maxWidth);
+                        y += 10;
+                    }
+                }
+            }
+            
+            // Missing numbers
+            if (missingNumbers.length > 0) {
+                checkPageBreak(40);
+                y += 5;
+                doc.setFontSize(16);
+                doc.setFont(undefined, 'bold');
+                doc.text('Missing Numbers:', margin, y);
+                y += 10;
+                
+                doc.setFontSize(10);
+                for (let num of missingNumbers) {
+                    checkPageBreak(50);
+                    doc.setFontSize(12);
+                    doc.setFont(undefined, 'bold');
+                    doc.text(num, margin, y);
+                    y += 8;
+                    
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    doc.text('Description:', margin, y);
+                    y += 7;
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += addWrappedText(missingNumbersDescription[num], margin, y, maxWidth);
+                    y += 10;
+                }
+            }
+            
+            // Personal Year
+            checkPageBreak(30);
+            y += 5;
+            doc.setFontSize(14);
+            doc.setFont(undefined, 'bold');
+            doc.text('Personal Year', margin, y);
+            y += 10;
+            
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'normal');
+            doc.text(`Your personal year in ${new Date().getFullYear()}: ${personalYearNum}`, margin, y);
+            y += 10;
+            
+            doc.setFont(undefined, 'bold');
+            doc.text('Lessons:', margin, y);
+            y += 7;
+            doc.setFont(undefined, 'normal');
+            y += addWrappedText(numbersDescription[String(personalYearNum)]['Lessons'], margin, y, maxWidth);
+            
+            doc.save(`${name}-${dobInput}.pdf`);
+        }
+    </script>
+</body>
+</html>

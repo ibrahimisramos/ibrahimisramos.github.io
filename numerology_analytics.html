@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerology Analytics Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 1em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        canvas {
+            max-height: 400px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Calculator</a>
+        
+        <h1>📊 Numerology Analytics Dashboard</h1>
+        <p class="subtitle">Insights from all generated reports</p>
+
+        <div id="loading" class="loading">
+            Loading data...
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            Error loading data. Make sure Google Sheets integration is set up correctly.
+        </div>
+
+        <div id="dashboard" style="display: none;">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Reports</h3>
+                    <div class="number" id="totalReports">0</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Most Common Life Path</h3>
+                    <div class="number" id="commonLifePath">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Most Common Personality</h3>
+                    <div class="number" id="commonPersonality">-</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Birth Year Range</h3>
+                    <div class="number" id="yearRange" style="font-size: 1.5em;">-</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h2>Birth Year Distribution</h2>
+                <canvas id="yearChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Life Path Number Distribution</h2>
+                <canvas id="lifePathChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Personality Number Distribution</h2>
+                <canvas id="personalityChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Number Frequency in Charts</h2>
+                <canvas id="numberFrequencyChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <h2>Recent Reports</h2>
+                <table id="recentReports">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Birth Year</th>
+                            <th>Life Path</th>
+                            <th>Personality</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // REPLACE THIS URL with your Google Apps Script Web App URL (add ?action=read to the end)
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8HV1K24ooZ6uJDK9LKnnuvwm7lLWvgy2m5fcStHObg7VXqfPZSmWQZZIegVk1H_Ff/exec?action=read';
+
+        let allData = [];
+
+        async function loadData() {
+            try {
+                const response = await fetch(GOOGLE_SCRIPT_URL);
+                const data = await response.json();
+                allData = data;
+                
+                if (data.length === 0) {
+                    document.getElementById('error').textContent = 'No data available yet. Generate some reports first!';
+                    document.getElementById('error').style.display = 'block';
+                    document.getElementById('loading').style.display = 'none';
+                    return;
+                }
+                
+                displayDashboard(data);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('error').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        function displayDashboard(data) {
+            // Calculate stats
+            const totalReports = data.length;
+            document.getElementById('totalReports').textContent = totalReports;
+
+            // Most common life path
+            const lifePathCounts = {};
+            const personalityCounts = {};
+            data.forEach(item => {
+                lifePathCounts[item.lifePathNumber] = (lifePathCounts[item.lifePathNumber] || 0) + 1;
+                personalityCounts[item.personalityNumber] = (personalityCounts[item.personalityNumber] || 0) + 1;
+            });
+
+            const mostCommonLifePath = Object.keys(lifePathCounts).reduce((a, b) => 
+                lifePathCounts[a] > lifePathCounts[b] ? a : b
+            );
+            const mostCommonPersonality = Object.keys(personalityCounts).reduce((a, b) => 
+                personalityCounts[a] > personalityCounts[b] ? a : b
+            );
+
+            document.getElementById('commonLifePath').textContent = mostCommonLifePath;
+            document.getElementById('commonPersonality').textContent = mostCommonPersonality;
+
+            // Year range
+            const years = data.map(item => item.birthYear);
+            const minYear = Math.min(...years);
+            const maxYear = Math.max(...years);
+            document.getElementById('yearRange').textContent = `${minYear}-${maxYear}`;
+
+            // Create charts
+            createYearChart(data);
+            createLifePathChart(lifePathCounts);
+            createPersonalityChart(personalityCounts);
+            createNumberFrequencyChart(data);
+            createRecentReportsTable(data);
+        }
+
+        function createYearChart(data) {
+            const yearCounts = {};
+            data.forEach(item => {
+                yearCounts[item.birthYear] = (yearCounts[item.birthYear] || 0) + 1;
+            });
+
+            const ctx = document.getElementById('yearChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(yearCounts).sort(),
+                    datasets: [{
+                        label: 'Number of Reports',
+                        data: Object.values(yearCounts),
+                        backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                        borderColor: 'rgba(102, 126, 234, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createLifePathChart(lifePathCounts) {
+            const ctx = document.getElementById('lifePathChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(lifePathCounts),
+                    datasets: [{
+                        data: Object.values(lifePathCounts),
+                        backgroundColor: [
+                            '#667eea', '#764ba2', '#f093fb', '#4facfe',
+                            '#43e97b', '#fa709a', '#fee140', '#30cfd0',
+                            '#a8edea'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createPersonalityChart(personalityCounts) {
+            const ctx = document.getElementById('personalityChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(personalityCounts),
+                    datasets: [{
+                        data: Object.values(personalityCounts),
+                        backgroundColor: [
+                            '#667eea', '#764ba2', '#f093fb', '#4facfe',
+                            '#43e97b', '#fa709a', '#fee140', '#30cfd0',
+                            '#a8edea'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createNumberFrequencyChart(data) {
+            const numberCounts = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0};
+            
+            data.forEach(item => {
+                const numbers = item.numbers.split('|');
+                numbers.forEach(numSet => {
+                    if (numSet) {
+                        const digit = numSet[0];
+                        numberCounts[digit] += numSet.length;
+                    }
+                });
+            });
+
+            const ctx = document.getElementById('numberFrequencyChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9'],
+                    datasets: [{
+                        label: 'Total Occurrences',
+                        data: Object.values(numberCounts),
+                        backgroundColor: 'rgba(118, 75, 162, 0.8)',
+                        borderColor: 'rgba(118, 75, 162, 1)',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function createRecentReportsTable(data) {
+            const tbody = document.querySelector('#recentReports tbody');
+            const recentData = data.slice(-10).reverse();
+            
+            recentData.forEach(item => {
+                const row = tbody.insertRow();
+                const date = new Date(item.timestamp).toLocaleDateString();
+                row.innerHTML = `
+                    <td>${date}</td>
+                    <td>${item.birthYear}</td>
+                    <td>${item.lifePathNumber}</td>
+                    <td>${item.personalityNumber}</td>
+                `;
+            });
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+</body>
+</html>
