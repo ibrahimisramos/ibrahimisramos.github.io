@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Technical Portfolio - Ibrahim Sharul</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="assets/img/favicon.png" rel="icon">
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="assets/css/style.css" rel="stylesheet">
+
+<style>
+  #main {
+    font-family: 'Inter', sans-serif;
+    color: #3a3a3a;
+    line-height: 1.75;
+  }
+
+  #main h2, #main h5.card-title, .breadcrumbs h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+  }
+
+  #main .section-title h2 {
+    font-size: 26px;
+    letter-spacing: -0.3px;
+  }
+
+  .portfolio-intro {
+    background: #f8f9fa;
+    border-left: 4px solid #149ddd;
+    border-radius: 6px;
+    padding: 20px 24px;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  /* Filter tabs */
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 32px;
+  }
+
+  .filter-tabs .btn {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 6px 18px;
+    border: 1.5px solid #149ddd;
+    color: #149ddd;
+    background: transparent;
+    transition: all 0.2s;
+  }
+
+  .filter-tabs .btn.active,
+  .filter-tabs .btn:hover {
+    background: #149ddd;
+    color: #fff;
+  }
+
+  /* Work cards */
+  .work-card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 100%;
+  }
+
+  .work-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .work-card .card-body {
+    padding: 24px;
+  }
+
+  .work-card h5.card-title {
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .work-card .card-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+  }
+
+  .work-card ul {
+    font-size: 13.5px;
+    color: #555;
+    padding-left: 18px;
+    margin-top: 8px;
+  }
+
+  .work-card ul li {
+    margin-bottom: 5px;
+  }
+
+  .category-badge {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .badge-red {
+    background: #fff0f0;
+    color: #c0392b;
+    border: 1px solid #f5c6cb;
+  }
+
+  .badge-blue {
+    background: #f0f7ff;
+    color: #1a6fb5;
+    border: 1px solid #b8d4f5;
+  }
+
+  .badge-green {
+    background: #f0fff4;
+    color: #27ae60;
+    border: 1px solid #b2dfce;
+  }
+
+  .tag-pill {
+    font-size: 11px;
+    background: #f0f4f8;
+    color: #555;
+    border-radius: 20px;
+    padding: 2px 9px;
+    margin: 2px 2px 0 0;
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+  }
+
+  /* Certs */
+  .cert-card {
+    border: none;
+    border-radius: 10px;
+    background: #f8f9fa;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    height: 100%;
+  }
+
+  .cert-link {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+  }
+
+  .cert-link:hover .cert-card {
+    box-shadow: 0 4px 16px rgba(20,157,221,0.18);
+    border-left: 3px solid #149ddd;
+  }
+
+  .cert-icon {
+    font-size: 24px;
+    color: #149ddd;
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .cert-sub {
+    font-size: 12px;
+    color: #888;
+    margin: 2px 0 0 0;
+  }
+
+  /* Writeups */
+  .section-divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 10px 0 40px 0;
+  }
+
+</style>
+</head>
+
+<body>
+<!-- ======= Mobile nav toggle button ======= -->
+<i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+<!-- ======= Header ======= -->
+<header id="header">
+<div class="d-flex flex-column">
+
+<div class="profile">
+<img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+<h1 class="text-light"><a href="index.html">Ibrahim Sharul</a></h1>
+<div class="social-links mt-3 text-center">
+<a href="https://t.me/ibrahimisramos" class="telegram"><i class="bx bxl-telegram"></i></a>
+<a href="https://www.instagram.com/ibrahimisramos/?hl=en" class="instagram"><i class="bx bxl-instagram"></i></a>
+<a href="https://github.com/ibrahimisramos" class="github"><i class="bx bxl-github"></i></a>
+<a href="https://linkedin.com/in/ibrahimsharul" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+<a href="mailto:ibrahimramos4@outlook.com" class="email"><i class="bi bi-envelope"></i></a>
+</div>
+</div>
+
+<nav id="navbar" class="nav-menu navbar">
+<ul>
+<li><a href="index.html#hero" class="nav-link"><i class="bx bx-home"></i> <span>Home</span></a></li>
+<li><a href="index.html#about" class="nav-link"><i class="bx bx-user"></i> <span>About</span></a></li>
+<li><a href="portfolio.html" class="nav-link active"><i class="bx bx-shield"></i> <span>Portfolio</span></a></li>
+<li><a href="index.html#resume" class="nav-link"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+<li><a href="index.html#experience" class="nav-link"><i class="bx bx-book-content"></i> <span>Interesting Papers</span></a></li>
+</ul>
+</nav>
+
+</div>
+</header><!-- End Header -->
+
+<main id="main">
+
+<!-- ======= Breadcrumbs ======= -->
+<section class="breadcrumbs">
+<div class="container">
+<div class="d-flex justify-content-between align-items-center">
+<h2>Technical Portfolio</h2>
+<ol>
+<li><a href="index.html">Home</a></li>
+<li>Portfolio</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section style="padding: 40px 0 10px 0;">
+<div class="container">
+<div class="portfolio-intro">
+A breakdown of my hands-on work across offensive security (Red Team) and security operations / digital forensics (Blue Team). Full client engagement details are kept confidential — the writeups section covers independent research, personal projects, and lab work.
+</div>
+</div>
+</section>
+
+<!-- ======= Certifications ======= -->
+<section style="padding: 20px 0 40px 0;">
+<div class="container">
+<div class="section-title"><h2>Certifications</h2></div>
+<hr class="section-divider">
+<div class="row gy-3">
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up">
+<a href="https://credentials.offsec.com/3ad68a3e-8c9d-4cb9-abb2-183498ab86f8" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">OSCP+</p>
+<p class="cert-sub">Offensive Security Certified Professional+</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+<a href="https://portswigger.net/web-security/e/c/330b53a2f746c16f" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">BSCP</p>
+<p class="cert-sub">Burp Suite Certified Professional</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+<a href="https://www.credly.com/earner/earned/badge/aaddc7ec-9a6f-438e-b47a-811a88ce4de4" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">CRT</p>
+<p class="cert-sub">CREST Registered Tester</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+<a href="https://www.credly.com/earner/earned/badge/f7875049-b56d-4524-a340-78c3d3e7e8ec" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">BTL1</p>
+<p class="cert-sub">Blue Team Level 1</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+<a href="https://www.credential.net/1bc245e4-6f4c-4c4c-8921-b29d8f2c015e" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">CIPT</p>
+<p class="cert-sub">Certified Information Privacy Technologist</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+<a href="https://cloud.google.com/learn/certification/cloud-engineer" target="_blank" class="cert-link">
+<div class="cert-card">
+<i class="bi bi-patch-check-fill cert-icon"></i>
+<div>
+<p class="cert-name">Google ACE</p>
+<p class="cert-sub">Associate Cloud Engineer</p>
+</div>
+</div>
+</a>
+</div>
+
+<div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+<a href="https://pwnedlabs.io/certifications" target="_blank" class="cert-link">
+<div class="cert-card" style="opacity: 0.7;">
+<i class="bi bi-clock cert-icon" style="color:#f39c12;"></i>
+<div>
+<p class="cert-name">ACRTP <span style="font-weight:400; color:#f39c12; font-size:11px;">In Progress</span></p>
+<p class="cert-sub">Amazon Cloud Red Team Professional</p>
+</div>
+</div>
+</a>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======= Red Team ======= -->
+<section id="redteam" style="padding: 20px 0 40px 0;">
+<div class="container">
+<div class="section-title"><h2>Red Team / Offensive Security</h2></div>
+<hr class="section-divider">
+<div class="row gy-4">
+
+<div class="col-lg-6" data-aos="fade-up">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-red">Red Team</span>
+<small class="text-muted">Feb 2025 – Present</small>
+</div>
+<h5 class="card-title">Penetration Testing — Vantage Point Security</h5>
+<p class="card-text">30+ security assessments delivered across web applications, mobile apps, APIs, and thick clients for clients including major banks.</p>
+<ul>
+<li>Identified critical vulnerabilities including IDORs, SSRF, CSRF, and authentication bypasses</li>
+<li>Mobile security testing — bypassed RASP and SSL pinning (Frida) on iOS/Android banking apps</li>
+<li>Built a custom Burp Suite extension to decrypt 3DES/AES-GCM encrypted banking traffic</li>
+<li>Built a custom JOSE fuzzing framework for a payment gateway engagement</li>
+</ul>
+<p style="font-size:12px; color:#999; margin-top:10px; margin-bottom:0;"><em>Client-specific findings are confidential.</em></p>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-red">Responsible Disclosure</span>
+<small class="text-muted">Ongoing</small>
+</div>
+<h5 class="card-title">Independent Vulnerability Research</h5>
+<p class="card-text">Independent security research outside of client engagements, reported through responsible disclosure.</p>
+<ul>
+<li>Discovered a systemic IDOR affecting all major resource controllers in an open-source CRM platform — details withheld until resolved</li>
+<li>Active bug bounty researcher on Intigriti (handle: <strong>ibrahimisramos</strong>)</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ======= Blue Team ======= -->
+<section id="blueteam" style="padding: 20px 0 40px 0; background: #fafafa;">
+<div class="container">
+<div class="section-title"><h2>Blue Team / DFIR &amp; Security Operations</h2></div>
+<hr class="section-divider">
+<div class="row gy-4">
+
+<div class="col-lg-6" data-aos="fade-up">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-blue">Blue Team</span>
+<small class="text-muted">University Project</small>
+</div>
+<h5 class="card-title">Malware Analysis — Static &amp; Dynamic</h5>
+<p class="card-text">Analysed a live malware sample in an isolated lab environment.</p>
+<ul>
+<li><strong>Static:</strong> PEView, PEiD, VirusTotal — file structure, packing, known signatures</li>
+<li><strong>Dynamic:</strong> Process Hacker, Process Explorer, Regshot, ApateDNS — runtime behaviour, registry changes, DNS activity</li>
+</ul>
+<a href="Projects/Malware/Group22_CS4238_Grp_project.pdf" target="_blank" class="btn btn-sm btn-outline-primary mt-2">View Report <i class="bi bi-arrow-up-right"></i></a>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-blue">Blue Team</span>
+<small class="text-muted">University Project</small>
+</div>
+<h5 class="card-title">Digital Forensics — Disk, Memory &amp; Browser Artifacts</h5>
+<p class="card-text">Full forensic investigation across disk images, memory captures, and browser artifacts.</p>
+<ul>
+<li><strong>Disk &amp; file system:</strong> Autopsy (4.21.0), The Sleuth Kit (4.12.1)</li>
+<li><strong>Memory:</strong> Volatility Framework (2.7.0)</li>
+<li><strong>Browser:</strong> ChromeHistoryViewer (1.53), MZHistoryView (1.70)</li>
+<li><strong>Hidden data:</strong> TrueCrypt (7.1a), Image Steganography (1.5.2)</li>
+</ul>
+<div class="d-flex gap-2 flex-wrap mt-2">
+<a href="Projects/Forensics/Team-6-Case-1-Report.pdf" target="_blank" class="btn btn-sm btn-outline-primary">Case 1 Report <i class="bi bi-arrow-up-right"></i></a>
+<a href="Projects/Forensics/Team-6-Case-2-Report.pdf" target="_blank" class="btn btn-sm btn-outline-primary">Case 2 Report <i class="bi bi-arrow-up-right"></i></a>
+<a href="Projects/Forensics/Case 2-Presentation-Slides.pdf" target="_blank" class="btn btn-sm btn-outline-primary">Case 2 Slides <i class="bi bi-arrow-up-right"></i></a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-blue">Blue Team</span>
+<small class="text-muted">In Progress</small>
+</div>
+<h5 class="card-title">FlareVM Malware Analysis Lab</h5>
+<p class="card-text">Building a dedicated FlareVM lab environment for malware analysis and reverse engineering. Tools in use:</p>
+<ul>
+<li>IDA Pro — static binary analysis and disassembly</li>
+<li>OllyDbg — dynamic x86 debugging</li>
+<li>Ghidra — open-source reverse engineering framework (planned focus next)</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-blue">Blue Team</span>
+<small class="text-muted">Ongoing</small>
+</div>
+<h5 class="card-title">Blue Team Labs Online (BTLO)</h5>
+<p class="card-text">25+ completed investigations across DFIR, Security Operations, Threat Intel, and Reverse Engineering. Practical SIEM experience with Splunk via BTL1.</p>
+<a href="https://blueteamlabs.online/public/user/ibrahimisramos" target="_blank" class="btn btn-sm btn-outline-primary mt-2">View BTLO Profile</a>
+</div>
+</div>
+</div>
+
+<div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+<div class="card work-card">
+<div class="card-body">
+<div class="d-flex align-items-start justify-content-between mb-2">
+<span class="category-badge badge-blue">Cloud Security</span>
+<small class="text-muted">In Progress</small>
+</div>
+<h5 class="card-title">Cloud Security — Pwned Labs (ACRTP)</h5>
+<p class="card-text">Working through the Amazon Cloud Red Team Professional path — IAM enumeration, EBS snapshot exploitation, CloudTrail analysis, and AWS attack/defence scenarios.</p>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+<div class="container">
+<div class="copyright">&copy; Copyright <strong><span>Ibrahim Sharul</span></strong></div>
+</div>
+</footer>
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="assets/vendor/typed.js/typed.min.js"></script>
+<script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
