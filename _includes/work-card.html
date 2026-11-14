@@ -1,0 +1,7 @@
+<div class="card">
+  <p class="kicker">{{ include.item.tag }}{% if include.item.dates %} · {{ include.item.dates }}{% endif %}</p>
+  <h3>{{ include.item.title }}</h3>
+  <p>{{ include.item.summary }}</p>
+  {% if include.item.points %}<ul>{% for pt in include.item.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+  {% if include.item.links %}<div class="links">{% for l in include.item.links %}<a href="{{ l.url | relative_url }}">{{ l.label }} →</a>{% endfor %}</div>{% endif %}
+</div>

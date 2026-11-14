@@ -1,0 +1,19 @@
+---
+title: Caesar's Postcard
+permalink: /launchpad-7f3a/caesars-postcard/
+slug_id: caesars-postcard
+order: 7
+track: Crypto
+difficulty: Medium
+flag_hash: e22aa2dca13a25cc72c31029972fd499ea82cf31ccbda8f13a40a06933c71dff
+hints:
+  - Julius Caesar hid messages by shifting each letter a fixed number of places in the alphabet. We know a flag starts with `IBR`. How far is it from `I` to `P`?
+  - In CyberChef, use the **ROT13** recipe but change its **Amount** from 13. Try different numbers until `PIY` becomes `IBR`.
+learned: |
+  The **Caesar cipher** shifts each letter by the same amount. With only 25 possible shifts, you can try them all, which is called a **brute-force** attack. Knowing part of the message (`IBR{`) made it even faster, a trick called a **known-plaintext** attack.
+real_world: |
+  Weak encryption gets broken the same way: by trying every key, or by using parts of the message you can guess. That's why modern encryption uses keys with more combinations than there are atoms on Earth.
+---
+<p>A postcard arrived at the launchpad, signed only "J.C." The message on the back makes no sense:</p>
+<div class="terminal">PIY{clup_cpkp_cpjp_kljvklk}</div>
+<p>Can you work out what Julius was trying to say?</p>

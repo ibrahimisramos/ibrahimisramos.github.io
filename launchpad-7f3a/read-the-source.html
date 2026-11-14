@@ -1,0 +1,19 @@
+---
+title: Behind the Curtain
+permalink: /launchpad-7f3a/read-the-source/
+slug_id: read-the-source
+order: 1
+track: Web
+difficulty: Easy
+flag_hash: d9a14b57e31b7eaf3523e439fa3133dca54123eb86227f0f05db1c98b0a7b73c
+hints:
+  - Web pages are just text files. Your browser shows you the pretty version, but you can ask for the raw text.
+  - Right-click anywhere and choose **View page source**, or press `Ctrl` + `U`. Then search with `Ctrl` + `F` for `IBR`.
+learned: |
+  Every web page is built from **HTML**, and your browser downloads all of it, including **comments** (`<!-- like this -->`) that developers leave for each other. Comments are hidden on screen, but anyone can read them in the page source.
+real_world: |
+  Pentesters always read the source of a target. Developers sometimes leave passwords, internal links, or "TODO: fix this security bug" notes in comments. Finding them is often step one of a real attack.
+---
+<p>The developer of this page swears there's nothing interesting here. It looks like an ordinary paragraph, after all.</p>
+<p>But developers leave notes for each other inside web pages. Can you find the one they forgot to delete?</p>
+<!-- dev note: remove before launch!! flag = IBR{always_read_the_source} -->

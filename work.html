@@ -1,0 +1,51 @@
+---
+layout: page
+title: Work
+kicker: Skillset & portfolio
+permalink: /work/
+redirect_from: /portfolio.html
+description: Ibrahim Sharul's certifications, experience, red and blue team work and papers.
+lede: Offensive security today, built on a foundation in security operations and digital forensics. Client engagements stay confidential; the blog covers my own research and lab work.
+---
+<div class="hero-actions"><a class="btn primary" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Full resume (PDF)</a><a class="btn" href="https://blueteamlabs.online/public/user/ibrahimisramos">BTLO profile</a></div>
+
+<div class="section-head" id="certs"><h2>Certifications</h2></div>
+<div class="cert-grid">
+  {% for c in site.data.certs %}
+  {% assign review = site.posts | where: "cert", c.id | first %}
+  <div class="cert">
+    {% include cert-card.html cert=c issuer=true %}
+    <small><a href="{{ c.verify }}">Verify ↗</a>{% if review %} · <a href="{{ review.url | relative_url }}">My review</a>{% endif %}</small>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="section-head"><h2>Red team / offensive security</h2></div>
+<div class="cards">
+  {% for w in site.data.work.red %}{% include work-card.html item=w %}{% endfor %}
+</div>
+
+<div class="section-head"><h2>Blue team / DFIR &amp; security operations</h2></div>
+<div class="cards">
+  {% for w in site.data.work.blue %}{% include work-card.html item=w %}{% endfor %}
+</div>
+
+<div class="section-head"><h2>Experience</h2></div>
+<div class="timeline">
+  {% for e in site.data.experience.professional %}{% include timeline-item.html item=e %}{% endfor %}
+</div>
+
+<details class="more">
+  <summary>Education</summary>
+  <div class="timeline">{% for e in site.data.experience.education %}{% include timeline-item.html item=e %}{% endfor %}</div>
+</details>
+<details class="more">
+  <summary>Leadership, volunteering &amp; part-time roles</summary>
+  <div class="timeline">{% for e in site.data.experience.leadership %}{% include timeline-item.html item=e %}{% endfor %}</div>
+</details>
+
+<div class="section-head"><h2>Interesting papers</h2></div>
+<p>Papers I wrote during my undergraduate modules.</p>
+<ul class="papers">
+  {% for p in site.data.papers %}<li><a href="{{ p.file | relative_url }}">{{ p.title }}</a><p>{{ p.blurb }}</p></li>{% endfor %}
+</ul>

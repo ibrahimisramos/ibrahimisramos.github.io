@@ -1,0 +1,57 @@
+title: Ibrahim Sharul
+tagline: Penetration tester, facilitator, traveller.
+description: >-
+  Ibrahim Sharul is a penetration tester in Singapore. Cert reviews, resource
+  lists, lab logs and travel stories.
+url: "https://ibrahimisramos.github.io"
+baseurl: ""
+lang: en
+timezone: Asia/Singapore
+
+author:
+  name: Ibrahim Sharul
+  email: ibrahimramos4@outlook.com
+
+social:
+  name: Ibrahim Sharul
+  links:
+    - https://github.com/ibrahimisramos
+    - https://linkedin.com/in/ibrahimsharul
+    - https://www.instagram.com/ibrahimisramos/
+    - https://t.me/ibrahimisramos
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:categories/:title/
+
+# Labels and blurbs for each post category. Order here = order of filter chips.
+post_categories:
+  certs:     { label: "Cert review",  blurb: "Exams I've sat, what they cost me, and the resources that actually helped." }
+  resources: { label: "Resources",    blurb: "Tools, cheat sheets and labs I keep coming back to." }
+  labs:      { label: "Lab log",      blurb: "Things I built or broke on my own time, and how I'd do them again." }
+  travel:    { label: "Travel",       blurb: "Stories from the road, 47 countries and counting." }
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "launchpad-7f3a" }
+    values: { layout: ctf, sitemap: false, noindex: true }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - POSTING.md
+  - CLAUDE.md
+  - scripts/
+  - package-lock.json
+  - vendor/

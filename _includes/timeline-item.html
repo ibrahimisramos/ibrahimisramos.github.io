@@ -1,0 +1,6 @@
+<div class="timeline-item">
+  <h3>{{ include.item.role }}</h3>
+  <p class="meta">{{ include.item.org }} · {{ include.item.dates }}</p>
+  {% if include.item.summary %}<p>{{ include.item.summary }}</p>{% endif %}
+  {% if include.item.points %}<ul>{% for pt in include.item.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+</div>

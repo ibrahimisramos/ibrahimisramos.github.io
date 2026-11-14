@@ -1,0 +1,9 @@
+---
+layout: null
+sitemap: false
+---
+User-agent: *
+# Nothing to see here. Especially not the launchpad.
+Disallow: /launchpad-7f3a/
+
+Sitemap: {{ site.url }}/sitemap.xml

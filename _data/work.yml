@@ -1,0 +1,49 @@
+red:
+  - title: Penetration Testing at Vantage Point Security
+    tag: Day job
+    dates: Feb 2025 – Present
+    summary: 30+ assessments across web, mobile, API and thick-client targets, including major banks. Client findings stay confidential.
+    points:
+      - Critical findings including IDORs, SSRF, CSRF and authentication bypasses
+      - Bypassed RASP and SSL pinning (Frida) on iOS/Android banking apps
+      - Custom Burp Suite extension to decrypt 3DES/AES-GCM encrypted banking traffic
+      - Custom JOSE fuzzing framework for a payment gateway engagement
+  - title: Independent Vulnerability Research
+    tag: Responsible disclosure
+    dates: Ongoing
+    summary: Research outside client work, reported through responsible disclosure.
+    points:
+      - Systemic IDOR across all major resource controllers in an open-source CRM (details withheld until fixed)
+      - Bug bounty hunting on Intigriti as <strong>ibrahimisramos</strong>
+blue:
+  - title: Malware Analysis, Static & Dynamic
+    tag: University project
+    summary: Analysed a live malware sample in an isolated lab.
+    points:
+      - "<strong>Static:</strong> PEView, PEiD, VirusTotal"
+      - "<strong>Dynamic:</strong> Process Hacker, Process Explorer, Regshot, ApateDNS"
+    links:
+      - { label: Report, url: /Projects/Malware/Group22_CS4238_Grp_project.pdf }
+  - title: Digital Forensics, Disk, Memory & Browser Artifacts
+    tag: University project
+    summary: Full forensic investigation across disk images, memory captures and browser artifacts.
+    points:
+      - "<strong>Disk:</strong> Autopsy, The Sleuth Kit"
+      - "<strong>Memory:</strong> Volatility"
+      - "<strong>Browser:</strong> ChromeHistoryViewer, MZHistoryView"
+      - "<strong>Hidden data:</strong> TrueCrypt, image steganography"
+    links:
+      - { label: Case 1 report, url: /Projects/Forensics/Team-6-Case-1-Report.pdf }
+      - { label: Case 2 report, url: /Projects/Forensics/Team-6-Case-2-Report.pdf }
+      - { label: Case 2 slides, url: /Projects/Forensics/Case 2-Presentation-Slides.pdf }
+  - title: FlareVM Malware Analysis Lab
+    tag: In progress
+    summary: Building a FlareVM lab for malware analysis and reverse engineering with IDA Pro, OllyDbg and, next, Ghidra.
+  - title: Blue Team Labs Online
+    tag: Ongoing
+    summary: 25+ investigations across DFIR, SecOps, threat intel and reverse engineering. Hands-on Splunk via BTL1.
+    links:
+      - { label: BTLO profile, url: "https://blueteamlabs.online/public/user/ibrahimisramos" }
+  - title: Cloud Security on Pwned Labs (ACRTP)
+    tag: In progress
+    summary: IAM enumeration, EBS snapshot looting, CloudTrail analysis and AWS attack/defence scenarios.

@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+{% include head.html %}
+</head>
+<body class="{{ page.body_class }}">
+<a class="skip-link" href="#content">Skip to content</a>
+{% include header.html %}
+<main id="content">
+{{ content }}
+</main>
+{% include footer.html %}
+{% if page.scripts %}{% for s in page.scripts %}<script src="{{ s | relative_url }}" defer></script>{% endfor %}{% endif %}
+</body>
+</html>
