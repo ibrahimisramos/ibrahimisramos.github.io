@@ -54,6 +54,7 @@
 <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-user"></i> <span>Portfolio</span></a></li>
 <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
 <li><a href="#experience" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Interesting Papers</span></a></li>
+<li><a href="#travel" class="nav-link scrollto"><i class="bx bx-map"></i> <span>Travel Blog</span></a></li>
 </ul>
 </nav><!-- .nav-menu -->
 
@@ -343,6 +344,22 @@ programmes at 30 primary and secondary schools </li>
 </div>
 </section><!-- End Services Section -->
 
+<!-- ======= Travel Blog Section ======= -->
+<section id="travel" style="padding: 60px 0; background: #f9f9f9;">
+<div class="container">
+
+<div class="section-title">
+<h2>Travel Blog</h2>
+<p>47 countries and counting — stories from the road.</p>
+</div>
+
+<div id="travel-posts-grid" class="row gy-4">
+<div class="col-12 text-center text-muted" id="travel-loading">Loading posts...</div>
+</div>
+
+</div>
+</section><!-- End Travel Blog Section -->
+
 </main><!-- End #main -->
 
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -360,6 +377,34 @@ programmes at 30 primary and secondary schools </li>
 
 <!-- Template Main JS File -->
 <script src="assets/js/main.js"></script>
+<script src="travel/posts.js"></script>
+<script>
+(function () {
+  const grid = document.getElementById('travel-posts-grid');
+  const posts = window.TRAVEL_POSTS || [];
+  if (!posts.length) {
+    grid.innerHTML = '<div class="col-12 text-center text-muted">No posts yet — check back soon.</div>';
+    return;
+  }
+  grid.innerHTML = posts.map(p => {
+    const tags = (p.tags || []).map(t => `<span class="badge bg-light text-secondary border me-1">${t}</span>`).join('');
+    return `
+    <div class="col-lg-4 col-md-6" data-aos="fade-up">
+      <div class="card h-100 border-0 shadow-sm" style="border-radius:12px; overflow:hidden;">
+        ${p.cover ? `<img src="${p.cover}" class="card-img-top" style="height:180px;object-fit:cover;" alt="${p.title}">` : `<div style="height:6px;background:#149ddd;"></div>`}
+        <div class="card-body p-4">
+          <p class="text-muted mb-1" style="font-size:12px;"><i class="bi bi-calendar3 me-1"></i>${p.date} &nbsp;·&nbsp; <i class="bi bi-geo-alt me-1"></i>${p.location}</p>
+          <h5 class="card-title mb-2" style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:#222;">${p.title}</h5>
+          <p class="card-text mb-3" style="font-size:14px;color:#555;">${p.excerpt}</p>
+          <div class="mb-3">${tags}</div>
+          <a href="travel-post.html?post=${p.slug}" class="btn btn-sm btn-outline-primary">Read post <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('travel-loading').remove();
+})();
+</script>
 </body>
 
 </html>
