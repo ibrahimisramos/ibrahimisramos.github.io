@@ -1,0 +1,105 @@
+---
+layout: default
+title: Coaching
+permalink: /coaching/
+description: Career coaching for students and early-career folks who want to break into cyber security.
+sitemap: false
+noindex: true
+---
+{% comment %}
+  MOCKUP. Not linked from the nav, hidden from search. Everything in a .ph block
+  is a placeholder for the owner to fill in: prices, testimonials, booking link.
+{% endcomment %}
+<div class="wrap page coaching-page">
+  <p class="mock-banner"><i class="bi bi-cone-striped" aria-hidden="true"></i> Mockup. Yellow-dashed items are placeholders.</p>
+
+  <section class="coach-hero">
+    <div>
+      <p class="kicker">Career coaching</p>
+      <h1>Break into cyber security <span>without years of guessing.</span></h1>
+      <p class="lede">I help students and early-career folks figure out where they fit in cyber, build the right skills and land that first role. I've walked the path myself, from NUS to pentester, and I've spent years facilitating and training students along the way.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free 20-min chat</a>
+        <a class="btn" href="#how">How it works</a>
+      </div>
+    </div>
+    <img class="coach-photo" src="{{ '/assets/img/hero-scc-podium.jpg' | relative_url }}" alt="Ibrahim teaching a mobile pentesting workshop at SCC 2026">
+  </section>
+
+  <div class="section-head"><h2>Is this you?</h2></div>
+  <div class="value-grid">
+    <div class="value"><i class="bi bi-signpost-split" aria-hidden="true"></i><h3>"Red team, blue team, GRC... where do I even start?"</h3><p>We map your strengths to the parts of cyber that fit you.</p></div>
+    <div class="value"><i class="bi bi-award" aria-hidden="true"></i><h3>"I keep collecting certs but nothing's moving."</h3><p>We pick the few that matter for your target role, and skip the rest.</p></div>
+    <div class="value"><i class="bi bi-file-earmark-person" aria-hidden="true"></i><h3>"My resume doesn't get callbacks."</h3><p>We turn labs and projects into proof that hiring managers notice.</p></div>
+    <div class="value"><i class="bi bi-chat-square-dots" aria-hidden="true"></i><h3>"Technical interviews freeze me."</h3><p>Mock interviews with someone who does this work every day.</p></div>
+  </div>
+
+  <div class="section-head"><h2>Why me</h2><a href="{{ '/about/' | relative_url }}">My story →</a></div>
+  <div class="stat-row">
+    <div><b>40+</b><span>security assessments delivered</span></div>
+    <div><b>{{ site.data.certs | where: "status", "earned" | size }}</b><span>certifications, so I know which ones pay off</span></div>
+    <div><b>SCC 2026</b><span>ran a hands-on mobile pentesting workshop</span></div>
+    <div><b>47</b><span>countries, so lots of perspectives</span></div>
+  </div>
+  <p class="coach-why">I switched from blue team to red team, and I've coached students as a facilitator for years. My CliftonStrengths are about solving problems and bringing people together, which is basically what coaching is.</p>
+
+  <div class="section-head" id="how"><h2>How it works</h2></div>
+  <ol class="flow">
+    <li><span class="flow-num">01</span><strong>Free chat</strong><small>20 minutes to understand where you are and where you want to be.</small></li>
+    <li><span class="flow-num">02</span><strong>Your roadmap</strong><small>A written plan: target role, skills, certs, projects and a timeline.</small></li>
+    <li><span class="flow-num">03</span><strong>Sessions</strong><small>Regular check-ins, resume and LinkedIn reviews, mock interviews.</small></li>
+    <li><span class="flow-num">04</span><strong>Land it</strong><small>Apply with confidence, and I'm in your corner through the offers.</small></li>
+  </ol>
+
+  <div class="section-head"><h2>Ways to work with me</h2></div>
+  <div class="package-grid">
+    <div class="package">
+      <h3>Roadmap session</h3>
+      <p class="price ph">S$[price]</p>
+      <ul class="ticks"><li>One 60-min session</li><li>Personal written roadmap</li><li>Cert and lab recommendations</li></ul>
+      <a class="btn" href="mailto:{{ site.author.email }}?subject=Roadmap%20session">Ask about this</a>
+    </div>
+    <div class="package featured">
+      <p class="tag">Most popular</p>
+      <h3>Career sprint</h3>
+      <p class="price ph">S$[price]</p>
+      <ul class="ticks"><li><span class="ph">[4]</span> sessions over <span class="ph">[6]</span> weeks</li><li>Resume + LinkedIn rewrite</li><li>Two mock technical interviews</li><li>Chat support between sessions</li></ul>
+      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Career%20sprint">Ask about this</a>
+    </div>
+    <div class="package">
+      <h3>Mock interview</h3>
+      <p class="price ph">S$[price]</p>
+      <ul class="ticks"><li>One realistic technical interview</li><li>Written feedback</li><li>What to fix before the real one</li></ul>
+      <a class="btn" href="mailto:{{ site.author.email }}?subject=Mock%20interview">Ask about this</a>
+    </div>
+  </div>
+
+  <div class="section-head"><h2>What people say</h2></div>
+  <div class="value-grid">
+    <blockquote class="quote ph">"[Testimonial from a past mentee or workshop participant: what changed for them.]"<cite>[Name, role]</cite></blockquote>
+    <blockquote class="quote ph">"[Testimonial: a specific result, like landing an internship.]"<cite>[Name, role]</cite></blockquote>
+    <blockquote class="quote">"Out of the three workshops we attended, this one was our favourite because it was more hands-on than theory."<cite>SCC 2026 participants</cite></blockquote>
+  </div>
+
+  <section class="lead-magnet">
+    <div>
+      <h2>Free: the cyber career roadmap</h2>
+      <p>A one-page guide to the main paths into cyber, the first certs worth doing and free labs to build real skills.</p>
+    </div>
+    <a class="btn light ph" href="#">[Get the PDF]</a>
+  </section>
+
+  <div class="section-head"><h2>Questions</h2></div>
+  <div class="accordion">
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Who is this for?</span></span></summary><div class="acc-body"><p>Students, fresh grads and career switchers aiming for their first cyber security role. If you're already a few years in, the mock interviews still help.</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Are sessions online?</span></span></summary><div class="acc-body"><p class="ph">[Online over video, or in person in Singapore?]</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Can you get me a job at your company?</span></span></summary><div class="acc-body"><p>No. Coaching is independent of my employer. I help you get ready to compete anywhere.</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">What if it's not a fit?</span></span></summary><div class="acc-body"><p class="ph">[Refund or reschedule policy.]</p></div></details>
+  </div>
+
+  <section class="coach-cta">
+    <h2>Not sure yet? Let's just talk.</h2>
+    <p>20 minutes, free, no pressure. You'll leave with at least one clear next step.</p>
+    <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free chat</a>
+  </section>
+</div>
