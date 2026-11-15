@@ -2,104 +2,205 @@
 layout: default
 title: Coaching
 permalink: /coaching/
-description: Career coaching for students and early-career folks who want to break into cyber security.
+description: Self-discovery coaching for fresh grads and young professionals who want to become the best version of themselves.
 sitemap: false
 noindex: true
+scripts: [/assets/js/coaching.js]
 ---
 {% comment %}
   MOCKUP. Not linked from the nav, hidden from search. Everything in a .ph block
-  is a placeholder for the owner to fill in: prices, testimonials, booking link.
+  is a placeholder or a draft for the owner to confirm: his own beliefs and
+  turning points, prices, testimonials, book list, booking link.
 {% endcomment %}
 <div class="wrap page coaching-page">
-  <p class="mock-banner"><i class="bi bi-cone-striped" aria-hidden="true"></i> Mockup. Yellow-dashed items are placeholders.</p>
+  <p class="mock-banner"><i class="bi bi-cone-striped" aria-hidden="true"></i> Mockup. Yellow-dashed text is a draft or placeholder for you to confirm.</p>
 
-  <section class="coach-hero">
-    <div>
-      <p class="kicker">Career coaching</p>
-      <h1>Break into cyber security <span>without years of guessing.</span></h1>
-      <p class="lede">I help students and early-career folks figure out where they fit in cyber, build the right skills and land that first role. I've walked the path myself, from NUS to pentester, and I've spent years facilitating and training students along the way.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free 20-min chat</a>
-        <a class="btn" href="#how">How it works</a>
+  <section class="tx-hero" aria-labelledby="tx-title">
+    <p class="kicker">Self-discovery coaching</p>
+    <h1 id="tx-title">From <span class="tx-word tx-before" data-tx-before>stuck</span> <span class="nowrap">to <span class="tx-word tx-after" data-tx-after>clear</span>.</span></h1>
+    <p class="lede">For fresh grads and young professionals who know there's a better version of themselves in there, but can't see the path yet. We use your strengths, your numbers and the right books to find it.</p>
+
+    <div class="tx-compare" data-compare style="--split: 94%">
+      <div class="tx-panel tx-panel-before" aria-hidden="true">
+        <p class="tx-label">Before</p>
+        <ul>
+          <li>"I'm not sure what I'm good at."</li>
+          <li>"Everyone else has it figured out."</li>
+          <li>"It's too late to change direction."</li>
+          <li>"I've read the books. Nothing sticks."</li>
+        </ul>
       </div>
+      <div class="tx-panel tx-panel-after" aria-hidden="true">
+        <p class="tx-label">After</p>
+        <ul>
+          <li>"I know my top strengths and use them on purpose."</li>
+          <li>"I'm on my own timeline, and that's fine."</li>
+          <li>"Every chapter so far was training for the next."</li>
+          <li>"I read one book, then I act on it."</li>
+        </ul>
+      </div>
+      <span class="tx-handle" aria-hidden="true"><i class="bi bi-arrow-left-right"></i></span>
+      <label class="sr-only" for="tx-range">Slide between before and after</label>
+      <input id="tx-range" class="tx-range" type="range" min="0" max="100" value="94">
     </div>
-    <img class="coach-photo" src="{{ '/assets/img/hero-scc-podium.jpg' | relative_url }}" alt="Ibrahim teaching a mobile pentesting workshop at SCC 2026">
+    <p class="tx-hint">Drag to see the shift</p>
+
+    <div class="hero-actions">
+      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free 20-min chat</a>
+      <a class="btn" href="#story">Read my story</a>
+    </div>
   </section>
 
-  <div class="section-head"><h2>Is this you?</h2></div>
-  <div class="value-grid">
-    <div class="value"><i class="bi bi-signpost-split" aria-hidden="true"></i><h3>"Red team, blue team, GRC... where do I even start?"</h3><p>We map your strengths to the parts of cyber that fit you.</p></div>
-    <div class="value"><i class="bi bi-award" aria-hidden="true"></i><h3>"I keep collecting certs but nothing's moving."</h3><p>We pick the few that matter for your target role, and skip the rest.</p></div>
-    <div class="value"><i class="bi bi-file-earmark-person" aria-hidden="true"></i><h3>"My resume doesn't get callbacks."</h3><p>We turn labs and projects into proof that hiring managers notice.</p></div>
-    <div class="value"><i class="bi bi-chat-square-dots" aria-hidden="true"></i><h3>"Technical interviews freeze me."</h3><p>Mock interviews with someone who does this work every day.</p></div>
+  <div class="section-head" id="story"><h2>I've been where you are</h2></div>
+  <p class="coach-why">I didn't start out with a plan. Each step below began with a belief that held me back, and a choice to rewire it.</p>
+
+  <ol class="story" data-story>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2015</span>
+      <h3>Nanyang Polytechnic</h3>
+      <p class="ch-fact">Diploma in Cyber Security &amp; Forensics.</p>
+      <div class="ch-shift">
+        <p class="ch-belief ph">"[A belief you held at the start, e.g. 'Poly kids don't end up at top universities.']"</p>
+        <p class="ch-rewire ph">[What you chose to believe instead, and what you did about it.]</p>
+      </div>
+    </li>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2017</span>
+      <h3>CSA SOC intern</h3>
+      <p class="ch-fact">Even emceed a Chinese New Year celebration in Mandarin, without being fluent.</p>
+      <div class="ch-shift">
+        <p class="ch-belief ph">"[e.g. 'I can't do that, I don't speak the language.']"</p>
+        <p class="ch-rewire ph">[e.g. 'Good enough for one afternoon is good enough to say yes.']</p>
+      </div>
+    </li>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2019</span>
+      <h3>MHA SOC analyst</h3>
+      <p class="ch-fact">Blue team, defending real systems.</p>
+      <div class="ch-shift">
+        <p class="ch-belief ph">"[The belief behind going back to study.]"</p>
+        <p class="ch-rewire ph">[The choice you made.]</p>
+      </div>
+    </li>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2020</span>
+      <h3>NUS, Information Security</h3>
+      <p class="ch-fact">University Scholars Programme. Facilitated programmes for students along the way.</p>
+      <div class="ch-shift">
+        <p class="ch-belief ph">"[A belief you rewired at NUS.]"</p>
+        <p class="ch-rewire ph">[How facilitating or your faith journey changed it.]</p>
+      </div>
+    </li>
+    <li class="chapter chapter-now" data-reveal>
+      <span class="ch-year">2025</span>
+      <h3>Penetration tester</h3>
+      <p class="ch-fact">Switched from blue team to red team at Vantage Point Security. Now training others, and 47 countries in.</p>
+      <div class="ch-shift">
+        <p class="ch-belief ph">"[e.g. 'Switching sides is starting over.']"</p>
+        <p class="ch-rewire ph">[e.g. 'Defending taught me how attackers think.']</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="section-head"><h2>Rewire a limiting belief</h2></div>
+  <p class="coach-why">These are the ones I hear most from fresh grads. Tap a card to flip it.</p>
+  <div class="flip-grid">
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I need to know my passion before I start."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Passion follows action. Start with what your strengths make easy.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"My friends are ahead of me."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Their highlight reel isn't your timeline. Compare yourself to last year's you.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I'm bad at networking."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Networking is curiosity about people. Ask good questions and listen.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"One wrong job will ruin my career."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Every role teaches you something. My SOC years made me a better pentester.</span>
+    </button>
   </div>
 
-  <div class="section-head"><h2>Why me</h2><a href="{{ '/about/' | relative_url }}">My story →</a></div>
-  <div class="stat-row">
-    <div><b>40+</b><span>security assessments delivered</span></div>
-    <div><b>{{ site.data.certs | where: "status", "earned" | size }}</b><span>certifications, so I know which ones pay off</span></div>
-    <div><b>SCC 2026</b><span>ran a hands-on mobile pentesting workshop</span></div>
-    <div><b>47</b><span>countries, so lots of perspectives</span></div>
+  <div class="section-head"><h2>Three lenses to understand yourself</h2></div>
+  <div class="lens-grid">
+    <div class="lens" data-reveal>
+      <i class="bi bi-gem" aria-hidden="true"></i>
+      <h3>Strengths</h3>
+      <p>Your CliftonStrengths results show what comes naturally, so you stop fixing weaknesses and start building on talent.</p>
+      <p class="lens-me">Mine: Connectedness, Input, Communication, Strategic, Individualisation.</p>
+    </div>
+    <div class="lens" data-reveal>
+      <i class="bi bi-hash" aria-hidden="true"></i>
+      <h3>Numerology</h3>
+      <p>Used as a mirror for reflection, not a prediction. Your numbers become questions: does this sound like you, and why?</p>
+      <p class="lens-me">I wrote an <a href="{{ '/about/' | relative_url }}">independent study</a> on numerology and identity, and built a <a href="{{ '/numerology.html' | relative_url }}">calculator</a>.</p>
+    </div>
+    <div class="lens" data-reveal>
+      <i class="bi bi-book" aria-hidden="true"></i>
+      <h3>Books</h3>
+      <p>I've read a lot of self-help so you don't have to. You get the one book that fits where you are, and a plan to act on it.</p>
+      <p class="lens-me ph">[Three books that changed you most.]</p>
+    </div>
   </div>
-  <p class="coach-why">I switched from blue team to red team, and I've coached students as a facilitator for years. My CliftonStrengths are about solving problems and bringing people together, which is basically what coaching is.</p>
 
-  <div class="section-head" id="how"><h2>How it works</h2></div>
+  <div class="section-head" id="how"><h2>The journey</h2></div>
   <ol class="flow">
-    <li><span class="flow-num">01</span><strong>Free chat</strong><small>20 minutes to understand where you are and where you want to be.</small></li>
-    <li><span class="flow-num">02</span><strong>Your roadmap</strong><small>A written plan: target role, skills, certs, projects and a timeline.</small></li>
-    <li><span class="flow-num">03</span><strong>Sessions</strong><small>Regular check-ins, resume and LinkedIn reviews, mock interviews.</small></li>
-    <li><span class="flow-num">04</span><strong>Land it</strong><small>Apply with confidence, and I'm in your corner through the offers.</small></li>
+    <li><span class="flow-num">01</span><strong>Discover</strong><small>Your strengths report, your numbers and a deep conversation about where you are.</small></li>
+    <li><span class="flow-num">02</span><strong>Uncover</strong><small>Name the beliefs holding you back, and where they came from.</small></li>
+    <li><span class="flow-num">03</span><strong>Rewire</strong><small>Replace them with beliefs you can test, one small action at a time.</small></li>
+    <li><span class="flow-num">04</span><strong>Become</strong><small>A plan for the next chapter, built on who you actually are.</small></li>
   </ol>
 
   <div class="section-head"><h2>Ways to work with me</h2></div>
   <div class="package-grid">
     <div class="package">
-      <h3>Roadmap session</h3>
+      <h3>Strengths deep-dive</h3>
       <p class="price ph">S$[price]</p>
-      <ul class="ticks"><li>One 60-min session</li><li>Personal written roadmap</li><li>Cert and lab recommendations</li></ul>
-      <a class="btn" href="mailto:{{ site.author.email }}?subject=Roadmap%20session">Ask about this</a>
+      <ul class="ticks"><li>One 60-min session</li><li>Walk through your CliftonStrengths results</li><li>How to use them at work this month</li></ul>
+      <a class="btn" href="mailto:{{ site.author.email }}?subject=Strengths%20deep-dive">Ask about this</a>
     </div>
     <div class="package featured">
       <p class="tag">Most popular</p>
-      <h3>Career sprint</h3>
+      <h3>Know yourself journey</h3>
       <p class="price ph">S$[price]</p>
-      <ul class="ticks"><li><span class="ph">[4]</span> sessions over <span class="ph">[6]</span> weeks</li><li>Resume + LinkedIn rewrite</li><li>Two mock technical interviews</li><li>Chat support between sessions</li></ul>
-      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Career%20sprint">Ask about this</a>
+      <ul class="ticks"><li><span class="ph">[6]</span> sessions over <span class="ph">[6]</span> weeks</li><li>Strengths, numerology and belief work</li><li>A personal reading plan</li><li>Chat support between sessions</li></ul>
+      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Know%20yourself%20journey">Ask about this</a>
     </div>
     <div class="package">
-      <h3>Mock interview</h3>
+      <h3>Numerology reflection</h3>
       <p class="price ph">S$[price]</p>
-      <ul class="ticks"><li>One realistic technical interview</li><li>Written feedback</li><li>What to fix before the real one</li></ul>
-      <a class="btn" href="mailto:{{ site.author.email }}?subject=Mock%20interview">Ask about this</a>
+      <ul class="ticks"><li>Your personal number report</li><li>A guided reflection session</li><li>Questions to take away</li></ul>
+      <a class="btn" href="mailto:{{ site.author.email }}?subject=Numerology%20reflection">Ask about this</a>
     </div>
   </div>
 
   <div class="section-head"><h2>What people say</h2></div>
   <div class="value-grid">
-    <blockquote class="quote ph">"[Testimonial from a past mentee or workshop participant: what changed for them.]"<cite>[Name, role]</cite></blockquote>
-    <blockquote class="quote ph">"[Testimonial: a specific result, like landing an internship.]"<cite>[Name, role]</cite></blockquote>
-    <blockquote class="quote">"Out of the three workshops we attended, this one was our favourite because it was more hands-on than theory."<cite>SCC 2026 participants</cite></blockquote>
+    <blockquote class="quote ph">"[Testimonial from someone you've mentored or facilitated: what changed for them.]"<cite>[Name, role]</cite></blockquote>
+    <blockquote class="quote ph">"[Testimonial: a belief they let go of, or a step they finally took.]"<cite>[Name, role]</cite></blockquote>
   </div>
 
   <section class="lead-magnet">
     <div>
-      <h2>Free: the cyber career roadmap</h2>
-      <p>A one-page guide to the main paths into cyber, the first certs worth doing and free labs to build real skills.</p>
+      <h2>Free: your numbers, in two minutes</h2>
+      <p>Try the numerology calculator and get your report. Then ask yourself: what here sounds like me?</p>
     </div>
-    <a class="btn light ph" href="#">[Get the PDF]</a>
+    <a class="btn light" href="{{ '/numerology.html' | relative_url }}">Try the calculator</a>
   </section>
 
   <div class="section-head"><h2>Questions</h2></div>
   <div class="accordion">
-    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Who is this for?</span></span></summary><div class="acc-body"><p>Students, fresh grads and career switchers aiming for their first cyber security role. If you're already a few years in, the mock interviews still help.</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Who is this for?</span></span></summary><div class="acc-body"><p>Fresh grads and young professionals who feel stuck, unsure of their strengths, or tired of self-help that never sticks.</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Do I have to believe in numerology?</span></span></summary><div class="acc-body"><p>No. We use it as a prompt for reflection, not a prediction. If it doesn't resonate, we lean on your strengths and the books instead.</p></div></details>
+    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Is this therapy?</span></span></summary><div class="acc-body"><p>No. Coaching is about moving forward. If you're struggling with your mental health, please reach out to a professional, and I'm happy to point you to support.</p></div></details>
     <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Are sessions online?</span></span></summary><div class="acc-body"><p class="ph">[Online over video, or in person in Singapore?]</p></div></details>
-    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">Can you get me a job at your company?</span></span></summary><div class="acc-body"><p>No. Coaching is independent of my employer. I help you get ready to compete anywhere.</p></div></details>
-    <details class="accordion-item"><summary><span class="acc-text"><span class="acc-role">What if it's not a fit?</span></span></summary><div class="acc-body"><p class="ph">[Refund or reschedule policy.]</p></div></details>
   </div>
 
   <section class="coach-cta">
-    <h2>Not sure yet? Let's just talk.</h2>
-    <p>20 minutes, free, no pressure. You'll leave with at least one clear next step.</p>
+    <h2>Your next chapter starts with one conversation.</h2>
+    <p>20 minutes, free, no pressure. You'll leave with at least one belief worth rewiring.</p>
     <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free chat</a>
   </section>
 </div>
