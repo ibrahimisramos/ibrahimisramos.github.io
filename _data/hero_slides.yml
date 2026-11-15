@@ -1,7 +1,8 @@
 # Background photos for the home-page slideshow. Each slide's role matches one of the typed roles
 # in index.html, and the photo changes when that role starts typing. A role with no slide of its own
 # (Penetration Tester) keeps the first slide, so it shares the consultant photo.
-# pos sets the CSS background-position, so the subject stays in frame when the photo is cropped.
+# pos sets the CSS background-position so the subject stays in frame when the photo is cropped;
+# src_mobile and pos_mobile override them on phones (600px and narrower), where a tall photo fits better.
 - { role: "Cyber Security Consultant", src: /assets/img/hero-consultant.jpg, alt: "Ibrahim in a Vantage Point Security t-shirt handing out hardware kits at a company event", pos: "center 70%" }
 - { role: "Facilitator/Trainer", src: /assets/img/hero-scc-podium.jpg, alt: "Ibrahim at the podium during his mobile pentesting workshop at SCC 2026", pos: "35% center" }
-- { role: "Traveller", src: /assets/img/hero-amalfi.jpg, alt: "Selfie of Ibrahim and three friends on a lookout high above the Amalfi Coast", pos: "center 40%" }
+- { role: "Traveller", src: /assets/img/hero-amalfi.jpg, alt: "Selfie of Ibrahim and three friends on a lookout high above the Amalfi Coast", pos: "center 40%", src_mobile: /assets/img/hero-pisa-mobile.jpg, pos_mobile: "center" }

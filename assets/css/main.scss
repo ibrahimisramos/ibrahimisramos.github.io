@@ -87,7 +87,8 @@ th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--
 
 /* Home slideshow hero */
 .hero-slides { position: relative; height: calc(100vh - 57px); min-height: 460px; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; background: #173b6c; }
-.hero-slides .slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
+.hero-slides .slide { position: absolute; inset: 0; background-image: var(--img); background-size: cover; background-position: var(--pos, center); opacity: 0; transition: opacity 1.5s ease-in-out; }
+@media (max-width: 600px) { .hero-slides .slide { background-image: var(--img-m, var(--img)); background-position: var(--pos-m, var(--pos, center)); } }
 .hero-slides .slide.is-active { opacity: 1; }
 .hero-slides::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(5, 13, 24, .38) 0%, rgba(5, 13, 24, .12) 60%, rgba(5, 13, 24, 0) 100%); }
 .hero-text { position: relative; z-index: 1; padding: 0 16px; text-shadow: 0 2px 14px rgba(0, 0, 0, .45); }
