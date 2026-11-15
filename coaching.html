@@ -6,6 +6,7 @@ description: Self-discovery coaching for fresh grads and young professionals who
 sitemap: false
 noindex: true
 scripts: [/assets/js/coaching.js]
+telegram: ibrahimisramos
 ---
 {% comment %}
   MOCKUP. Not linked from the nav, hidden from search. Everything in a .ph block
@@ -13,7 +14,7 @@ scripts: [/assets/js/coaching.js]
   turning points, prices, testimonials, book list, booking link.
 {% endcomment %}
 <div class="wrap page coaching-page">
-  <p class="mock-banner"><i class="bi bi-cone-striped" aria-hidden="true"></i> Mockup. Yellow-dashed text is a draft or placeholder for you to confirm.</p>
+  <p class="mock-banner"><i class="bi bi-cone-striped" aria-hidden="true"></i> Mockup. Yellow-dashed text is a placeholder for you to confirm.</p>
 
   <section class="tx-hero" aria-labelledby="tx-title">
     <p class="kicker">Self-discovery coaching</p>
@@ -46,7 +47,7 @@ scripts: [/assets/js/coaching.js]
     <p class="tx-hint">Drag to see the shift</p>
 
     <div class="hero-actions">
-      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free 20-min chat</a>
+      <a class="btn primary" href="https://t.me/{{ page.telegram }}">Book a free 20-min chat on Telegram</a>
       <a class="btn" href="#story">Read my story</a>
     </div>
   </section>
@@ -58,46 +59,64 @@ scripts: [/assets/js/coaching.js]
     <li class="chapter" data-reveal>
       <span class="ch-year">2015</span>
       <h3>Nanyang Polytechnic</h3>
-      <p class="ch-fact">Diploma in Cyber Security &amp; Forensics.</p>
+      <p class="ch-fact">I got 8 distinctions and could have gone to JC. I chose poly against my family's wishes, won a scholarship, graduated with a 3.97 GPA and went on to university on another scholarship.</p>
       <div class="ch-shift">
-        <p class="ch-belief ph">"[A belief you held at the start, e.g. 'Poly kids don't end up at top universities.']"</p>
-        <p class="ch-rewire ph">[What you chose to believe instead, and what you did about it.]</p>
+        <p class="ch-belief">"Good grades mean JC. Poly is the lesser path."</p>
+        <p class="ch-rewire">The right path is the one that fits you, not the one everyone expects.</p>
       </div>
     </li>
     <li class="chapter" data-reveal>
       <span class="ch-year">2017</span>
       <h3>CSA SOC intern</h3>
-      <p class="ch-fact">Even emceed a Chinese New Year celebration in Mandarin, without being fluent.</p>
+      <p class="ch-fact">Nobody wanted to emcee the Chinese New Year celebration, so on my last day I did it, in Mandarin, without being fluent and without ever having emceed before. I had so much fun.</p>
       <div class="ch-shift">
-        <p class="ch-belief ph">"[e.g. 'I can't do that, I don't speak the language.']"</p>
-        <p class="ch-rewire ph">[e.g. 'Good enough for one afternoon is good enough to say yes.']</p>
+        <p class="ch-belief">"I've never done this before, so I'm not the right person."</p>
+        <p class="ch-rewire">Say yes first. You become the right person by doing it.</p>
       </div>
     </li>
     <li class="chapter" data-reveal>
       <span class="ch-year">2019</span>
       <h3>MHA SOC analyst</h3>
-      <p class="ch-fact">Blue team, defending real systems.</p>
+      <p class="ch-fact">I applied with nothing but my resume, and became the first PES fit (B1) person to work in that cyber security operations centre, in the field I'd studied for.</p>
       <div class="ch-shift">
-        <p class="ch-belief ph">"[The belief behind going back to study.]"</p>
-        <p class="ch-rewire ph">[The choice you made.]</p>
+        <p class="ch-belief">"People like me don't get into places like that."</p>
+        <p class="ch-rewire">Apply anyway. Let them be the ones to say no.</p>
       </div>
     </li>
     <li class="chapter" data-reveal>
       <span class="ch-year">2020</span>
       <h3>NUS, Information Security</h3>
-      <p class="ch-fact">University Scholars Programme. Facilitated programmes for students along the way.</p>
+      <p class="ch-fact">I joined the University Scholars Programme to stretch myself, even though I thought I was bad at English and writing. Surrounded by top students from RI, Hwa Chong and VJC, I felt like an imposter. I had a panic attack over an essay and rushed to the NUS counsellor, even though I'd been told seeing a counsellor would be a black stain on my career. One semester my GPA fell below what my scholarship needed. After my first Covid semester, struggling with maths, my strongest subject, I almost quit.</p>
       <div class="ch-shift">
-        <p class="ch-belief ph">"[A belief you rewired at NUS.]"</p>
-        <p class="ch-rewire ph">[How facilitating or your faith journey changed it.]</p>
+        <p class="ch-belief">"Everyone here is smarter than me. I don't belong."</p>
+        <p class="ch-rewire">I made friends with people better than me, and learned from them instead of comparing myself to them.</p>
+      </div>
+    </li>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2022</span>
+      <h3>Finding my own faith</h3>
+      <p class="ch-fact">Learning about numerology changed my life. It gave me clarity, and helped the people around me too. I chose a faith I truly believe in, not just the one I was born into. I went against what I was told, learned to discern what is true from what people believe is true, and now trust in a bigger force and the universe.</p>
+      <div class="ch-shift">
+        <p class="ch-belief">"I have to believe what I was born into."</p>
+        <p class="ch-rewire">My beliefs are mine to question, test and choose.</p>
+      </div>
+    </li>
+    <li class="chapter" data-reveal>
+      <span class="ch-year">2025</span>
+      <h3>Penetration tester</h3>
+      <p class="ch-fact">I wanted blue team because I thought it was easier, and kept saying I'd take any job except pentesting. No blue team job came, so I tried red team. I was terrified of OSCP because I feared failing, but I persevered and got it. Now I'm a pentester at Vantage Point Security, and I love consultancy: every client is different people and a new problem. I earn less than some of my uni peers, but I'm learning how to manage clients, vendors and stakeholders, and that will pay off for the rest of my career.</p>
+      <div class="ch-shift">
+        <p class="ch-belief">"I'll fail, so I shouldn't even try."</p>
+        <p class="ch-rewire">The job I said I'd never take turned out to be the one I love. Fear was pointing at exactly where I needed to grow.</p>
       </div>
     </li>
     <li class="chapter chapter-now" data-reveal>
-      <span class="ch-year">2025</span>
-      <h3>Penetration tester</h3>
-      <p class="ch-fact">Switched from blue team to red team at Vantage Point Security. Now training others, and 47 countries in.</p>
+      <span class="ch-year">2026</span>
+      <h3>Married, against all odds</h3>
+      <p class="ch-fact">I married the love of my life, someone my faith and family said I shouldn't choose. We live away from my family now, and I'm happier than I've ever been. I'm glad I took the path less travelled.</p>
       <div class="ch-shift">
-        <p class="ch-belief ph">"[e.g. 'Switching sides is starting over.']"</p>
-        <p class="ch-rewire ph">[e.g. 'Defending taught me how attackers think.']</p>
+        <p class="ch-belief">"I have to live the life other people expect of me."</p>
+        <p class="ch-rewire">My life is mine to own. Love is worth choosing, even when it costs you.</p>
       </div>
     </li>
   </ol>
@@ -114,12 +133,32 @@ scripts: [/assets/js/coaching.js]
       <span class="flip-face flip-back"><small>Rewired</small>Their highlight reel isn't your timeline. Compare yourself to last year's you.</span>
     </button>
     <button class="flip" type="button" aria-pressed="false">
-      <span class="flip-face flip-front"><small>Limiting belief</small>"I'm bad at networking."</span>
-      <span class="flip-face flip-back"><small>Rewired</small>Networking is curiosity about people. Ask good questions and listen.</span>
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I'm not as smart as the people around me."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Then you're in the right room. Befriend them and learn, don't compare.</span>
     </button>
     <button class="flip" type="button" aria-pressed="false">
-      <span class="flip-face flip-front"><small>Limiting belief</small>"One wrong job will ruin my career."</span>
-      <span class="flip-face flip-back"><small>Rewired</small>Every role teaches you something. My SOC years made me a better pentester.</span>
+      <span class="flip-face flip-front"><small>Limiting belief</small>"My batchmates earn more, so I'm behind."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Early in your career, choose learning over salary. Skills compound.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"If I fail, everyone will know I'm not good enough."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Fear of failing is louder than failing. Most people are too busy with their own lives to notice.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I have to follow the path my family expects."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>You can love your family and still choose your own path.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I'd take any job except that one."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>The thing you resist most is often where you grow most. Try it before you rule it out.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"Seeing a counsellor will stain my career."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Asking for help early is a strength. I went, and it helped me keep going.</span>
+    </button>
+    <button class="flip" type="button" aria-pressed="false">
+      <span class="flip-face flip-front"><small>Limiting belief</small>"I'm bad at networking."</span>
+      <span class="flip-face flip-back"><small>Rewired</small>Networking is curiosity about people. Ask good questions and listen.</span>
     </button>
   </div>
 
@@ -141,7 +180,7 @@ scripts: [/assets/js/coaching.js]
       <i class="bi bi-book" aria-hidden="true"></i>
       <h3>Books</h3>
       <p>I've read a lot of self-help so you don't have to. You get the one book that fits where you are, and a plan to act on it.</p>
-      <p class="lens-me ph">[Three books that changed you most.]</p>
+      <p class="lens-me">The three that changed my life: <em>The Code of the Extraordinary Mind</em> (it taught me to spot "Brules", the bullshit rules, and stop living other people's expectations), <em>You Are a Badass</em> and <em>Positive Intelligence</em>.</p>
     </div>
   </div>
 
@@ -159,20 +198,20 @@ scripts: [/assets/js/coaching.js]
       <h3>Strengths deep-dive</h3>
       <p class="price ph">S$[price]</p>
       <ul class="ticks"><li>One 60-min session</li><li>Walk through your CliftonStrengths results</li><li>How to use them at work this month</li></ul>
-      <a class="btn" href="mailto:{{ site.author.email }}?subject=Strengths%20deep-dive">Ask about this</a>
+      <a class="btn" href="https://t.me/{{ page.telegram }}">Ask about this</a>
     </div>
     <div class="package featured">
       <p class="tag">Most popular</p>
       <h3>Know yourself journey</h3>
       <p class="price ph">S$[price]</p>
-      <ul class="ticks"><li><span class="ph">[6]</span> sessions over <span class="ph">[6]</span> weeks</li><li>Strengths, numerology and belief work</li><li>A personal reading plan</li><li>Chat support between sessions</li></ul>
-      <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Know%20yourself%20journey">Ask about this</a>
+      <ul class="ticks"><li><span class="ph">[6]</span> sessions over <span class="ph">[6]</span> weeks</li><li>Strengths, numerology and belief work</li><li>A personal reading plan</li><li>Telegram support between sessions</li></ul>
+      <a class="btn primary" href="https://t.me/{{ page.telegram }}">Ask about this</a>
     </div>
     <div class="package">
       <h3>Numerology reflection</h3>
       <p class="price ph">S$[price]</p>
       <ul class="ticks"><li>Your personal number report</li><li>A guided reflection session</li><li>Questions to take away</li></ul>
-      <a class="btn" href="mailto:{{ site.author.email }}?subject=Numerology%20reflection">Ask about this</a>
+      <a class="btn" href="https://t.me/{{ page.telegram }}">Ask about this</a>
     </div>
   </div>
 
@@ -201,6 +240,6 @@ scripts: [/assets/js/coaching.js]
   <section class="coach-cta">
     <h2>Your next chapter starts with one conversation.</h2>
     <p>20 minutes, free, no pressure. You'll leave with at least one belief worth rewiring.</p>
-    <a class="btn primary" href="mailto:{{ site.author.email }}?subject=Coaching%20chat">Book a free chat</a>
+    <a class="btn primary" href="https://t.me/{{ page.telegram }}">Message me on Telegram</a>
   </section>
 </div>
