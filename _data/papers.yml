@@ -1,18 +1,37 @@
+# Papers from my undergraduate modules, shown on the About page. `icon` is a Bootstrap Icons name.
 - title: Contextualizing Numerology's Pertinence to Personal Identity Construction in Singapore
+  topic: Independent study
+  icon: stars
+  color: c-purple
   blurb: An independent study I initiated. I found numerology useful for gaining insight into ourselves and the struggles we face.
   file: "/Reports/Contextualizing Numerology's Pertinence to Personal Identity Construction in Singapore.pdf"
 - title: Data Protection Scene in South-East Asia
+  topic: Privacy & law
+  icon: shield-lock
+  color: c-blue
   blurb: How data protection laws differ in philosophy, law and enforcement across Singapore, Indonesia and the Philippines.
   file: /Reports/Data Protection Scene in South East Asia.pdf
 - title: Digital Transformation Report for a Food Ingredient Company
+  topic: Business
+  icon: graph-up-arrow
+  color: c-green
   blurb: Digital transformation recommendations for a fictitious food ingredient company.
   file: /Reports/Digital Transformation Report HealNut.pdf
 - title: The Patent System during the Industrial Revolution
+  topic: History
+  icon: hourglass-split
+  color: c-orange
   blurb: Was the US patent system effective in spurring innovation? Mostly not, and here's why.
   file: /Reports/The Patent System during the Industrial Revolution - Was it effective to spur innovation.pdf
 - title: Is South Indian Cinema Beneficial to SI Youth in Singapore?
+  topic: Culture & film
+  icon: film
+  color: c-red
   blurb: I interviewed South Indian youth on what lessons and values SI cinema teaches them.
   file: /Reports/South Indian (SI) Cinema - Is it beneficial to SI Youth in Singapore.pdf
 - title: "Bajrangi Bhaijaan: A Message for Singaporean Youth"
+  topic: Film review
+  icon: camera-reels
+  color: c-teal
   blurb: A Bollywood movie review, linked to soft power and Singaporean youth.
   file: /Reports/Useful message for Singaporean youth in soft power push - A movie review of Bajrangi Bhaijaan.pdf

@@ -2,7 +2,7 @@ red:
   - title: Penetration Testing at Vantage Point Security
     tag: Day job
     dates: Feb 2025 – Present
-    summary: 30+ assessments across web, mobile, API and thick-client targets, including major banks. Client findings stay confidential.
+    summary: 40+ assessments across web, mobile, API and thick-client targets, including major banks. Client findings stay confidential.
     points:
       - Critical findings including IDORs, SSRF, CSRF and authentication bypasses
       - Bypassed RASP and SSL pinning (Frida) on iOS/Android banking apps
@@ -42,8 +42,3 @@ blue:
   - title: Blue Team Labs Online
     tag: Ongoing
     summary: 25+ investigations across DFIR, SecOps, threat intel and reverse engineering. Hands-on Splunk via BTL1.
-    links:
-      - { label: BTLO profile, url: "https://blueteamlabs.online/public/user/ibrahimisramos" }
-  - title: Cloud Security on Pwned Labs (ACRTP)
-    tag: In progress
-    summary: IAM enumeration, EBS snapshot looting, CloudTrail analysis and AWS attack/defence scenarios.

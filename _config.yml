@@ -33,6 +33,7 @@ post_categories:
   resources: { label: "Resources",    blurb: "Tools, cheat sheets and labs I keep coming back to." }
   labs:      { label: "Lab log",      blurb: "Things I built or broke on my own time, and how I'd do them again." }
   travel:    { label: "Travel",       blurb: "Stories from the road, 47 countries and counting." }
+  talks:     { label: "Talks & training", blurb: "Workshops I've run and events I've helped at." }
 
 plugins:
   - jekyll-feed

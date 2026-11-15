@@ -3,7 +3,7 @@ professional:
     org: Vantage Point Security
     dates: Feb 2025 – Present
     points:
-      - Delivered 30+ security assessments across web applications, mobile apps, and APIs for clients including major banks, identifying critical vulnerabilities such as IDORs, SSRF, CSRF, and authentication bypasses
+      - Delivered 40+ security assessments across web applications, mobile apps, and APIs for clients including major banks, identifying critical vulnerabilities such as IDORs, SSRF, CSRF, and authentication bypasses
       - Performed mobile application security testing, including bypassing RASP and anti-tampering controls (Frida detection, SSL pinning) on iOS/Android banking applications
       - Built a custom Burp Suite extension to decrypt 3DES/AES-GCM end-to-end encrypted traffic for a banking application assessment, and a custom JOSE fuzzing framework for a payment gateway engagement
       - Independently discovered and responsibly disclosed a systemic IDOR vulnerability affecting all major resource controllers in an open-source CRM platform
@@ -51,6 +51,9 @@ education:
       - Specialisation in Cyber Security Operations and Intelligence, top 15% of cohort
 
 leadership:
+  - role: Volunteer, BizCom track
+    org: SINCON 2026
+    dates: 2026
   - role: Volunteer + Volunteer Coordinator (Open Day)
     org: The Astronauts Collective
     dates: Mar 2026 – Present

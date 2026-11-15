@@ -10,6 +10,21 @@
 {{ content }}
 </main>
 {% include footer.html %}
+<script>
+  // Mobile menu toggle (the nav is always visible on wide screens).
+  (function () {
+    var btn = document.querySelector('.nav-toggle'), body = document.body;
+    btn.addEventListener('click', function () {
+      var open = body.classList.toggle('nav-open');
+      btn.setAttribute('aria-expanded', open);
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      btn.firstElementChild.className = open ? 'bi bi-x' : 'bi bi-list';
+    });
+    document.querySelectorAll('.site-nav a').forEach(function (a) {
+      a.addEventListener('click', function () { if (body.classList.contains('nav-open')) btn.click(); });
+    });
+  })();
+</script>
 {% if page.scripts %}{% for s in page.scripts %}<script src="{{ s | relative_url }}" defer></script>{% endfor %}{% endif %}
 </body>
 </html>

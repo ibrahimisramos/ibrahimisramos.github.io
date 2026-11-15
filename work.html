@@ -1,51 +1,114 @@
 ---
-layout: page
+layout: default
 title: Work
-kicker: Skillset & portfolio
 permalink: /work/
 redirect_from: /portfolio.html
-description: Ibrahim Sharul's certifications, experience, red and blue team work and papers.
-lede: Offensive security today, built on a foundation in security operations and digital forensics. Client engagements stay confidential; the blog covers my own research and lab work.
+description: Ibrahim Sharul's work as a penetration tester and cyber security consultant, plus certifications, experience and red and blue team projects.
 ---
-<div class="hero-actions"><a class="btn primary" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Full resume (PDF)</a><a class="btn" href="https://blueteamlabs.online/public/user/ibrahimisramos">BTLO profile</a></div>
+<div class="wrap page work-page">
+  <section class="work-hero">
+    <p class="kicker">Skillset &amp; portfolio</p>
+    <h1>I break things for a living <span>(with permission)</span>.</h1>
+    <p class="lede">I'm a penetration tester and cyber security consultant at Vantage Point Security. Companies hire us to attack their apps before the real attackers do, then I help their teams fix what I find.</p>
+    <div class="stat-row">
+      <div><b>40+</b><span>assessments delivered</span></div>
+      <div><b>{{ site.data.certs | where: "status", "earned" | size }}</b><span>certifications</span></div>
+      <div><b>6</b><span>kinds of targets</span></div>
+      <div><b>2</b><span>sides played: blue, then red</span></div>
+    </div>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Full resume (PDF)</a>
+      <a class="btn" href="mailto:{{ site.author.email }}">Work with me</a>
+    </div>
+  </section>
+
+  <div class="section-head"><h2>What I test</h2></div>
+  <div class="target-grid">
+    <div class="target"><i class="bi bi-globe2" aria-hidden="true"></i><strong>Web apps</strong><small>Auth, access control, injection, business logic</small></div>
+    <div class="target"><i class="bi bi-braces" aria-hidden="true"></i><strong>APIs</strong><small>IDORs, broken auth, mass assignment</small></div>
+    <div class="target"><i class="bi bi-phone" aria-hidden="true"></i><strong>Mobile</strong><small>iOS and Android, RASP and SSL pinning bypass</small></div>
+    <div class="target"><i class="bi bi-window-desktop" aria-hidden="true"></i><strong>Thick clients</strong><small>Desktop apps and what they talk to</small></div>
+    <div class="target"><i class="bi bi-cloud" aria-hidden="true"></i><strong>Cloud</strong><small>AWS attack paths, IAM and misconfigurations</small></div>
+    <div class="target"><i class="bi bi-hdd-network" aria-hidden="true"></i><strong>Host config reviews</strong><small>Hardening against benchmarks</small></div>
+  </div>
+
+  <div class="section-head"><h2>How an engagement with me goes</h2></div>
+  <ol class="flow">
+    <li><span class="flow-num">01</span><strong>Scope it</strong><small>Agree what's in bounds and what "bad" looks like for your business.</small></li>
+    <li><span class="flow-num">02</span><strong>Break it</strong><small>Test like an attacker, chain small bugs into real impact.</small></li>
+    <li><span class="flow-num">03</span><strong>Explain it</strong><small>A report and debrief that developers and leadership both understand.</small></li>
+    <li><span class="flow-num">04</span><strong>Fix it</strong><small>Help with remediation, then retest to prove it's closed.</small></li>
+  </ol>
+
+<div class="section-head"><h2>What I bring as a consultant</h2></div>
+<div class="value-grid">
+  <div class="value"><i class="bi bi-bullseye" aria-hidden="true"></i><h3>Broad offensive coverage</h3><p>Web, API, mobile, thick-client and cloud testing, plus host configuration reviews, backed by OSCP+, BSCP, CRT and ACRTP.</p></div>
+  <div class="value"><i class="bi bi-shield-check" aria-hidden="true"></i><h3>A defender's eye</h3><p>I started in the MHA and CSA SOCs, so my findings come with remediation that a blue team can actually act on.</p></div>
+  <div class="value"><i class="bi bi-diagram-3" aria-hidden="true"></i><h3>Root causes, not just bugs</h3><p>When one endpoint is broken, I look for the pattern behind it, so clients fix the class of issue and not just one instance.</p></div>
+  <div class="value"><i class="bi bi-chat-square-text" aria-hidden="true"></i><h3>Clear communication</h3><p>Reports and debriefs that make sense to developers and leadership alike. Years of facilitating and training help here.</p></div>
+  <div class="value"><i class="bi bi-file-lock" aria-hidden="true"></i><h3>Privacy-aware</h3><p>As a CIPT, I connect technical findings to data protection obligations, not just CVSS scores.</p></div>
+  <div class="value"><i class="bi bi-tools" aria-hidden="true"></i><h3>Builds what's missing</h3><p>Custom tooling when off-the-shelf fails, like a Burp extension for end-to-end encrypted traffic and a JOSE fuzzing framework.</p></div>
+</div>
 
 <div class="section-head" id="certs"><h2>Certifications</h2></div>
-<div class="cert-grid">
-  {% for c in site.data.certs %}
-  {% assign review = site.posts | where: "cert", c.id | first %}
-  <div class="cert">
-    {% include cert-card.html cert=c issuer=true %}
-    <small><a href="{{ c.verify }}">Verify ↗</a>{% if review %} · <a href="{{ review.url | relative_url }}">My review</a>{% endif %}</small>
+{% include cert-grid.html %}
+
+<div class="section-head"><h2>My toolbox</h2></div>
+<ul class="toolbox">
+  {% assign tools = "Burp Suite,Frida,JADX,Android emulator,Custom Burp extensions,Python,Splunk,Volatility,Autopsy" | split: "," %}
+  {% for tool in tools %}<li>{{ tool }}</li>{% endfor %}
+</ul>
+
+<section class="team team-red">
+  <div class="team-head"><span class="team-icon"><i class="bi bi-crosshair" aria-hidden="true"></i></span><div><p class="kicker">Today</p><h2>Red team / offensive security</h2></div></div>
+  <div class="cards">
+    {% for w in site.data.work.red %}{% include work-card.html item=w side="red" %}{% endfor %}
   </div>
+</section>
+
+<section class="team team-blue">
+  <div class="team-head"><span class="team-icon"><i class="bi bi-shield-shaded" aria-hidden="true"></i></span><div><p class="kicker">Where I started</p><h2>Blue team / DFIR &amp; security operations</h2></div></div>
+  <div class="cards">
+    {% for w in site.data.work.blue %}{% include work-card.html item=w side="blue" %}{% endfor %}
+  </div>
+</section>
+
+<div class="section-head"><h2><i class="bi bi-briefcase head-icon" aria-hidden="true"></i>Experience</h2></div>
+<div class="accordion">
+  {% for e in site.data.experience.professional %}
+  <details class="accordion-item"{% if forloop.first %} open{% endif %}>
+    <summary><span class="acc-icon"><i class="bi bi-briefcase" aria-hidden="true"></i></span><span class="acc-text"><span class="acc-role">{{ e.role }}</span><span class="acc-meta">{{ e.org }} · {{ e.dates }}</span></span></summary>
+    <div class="acc-body">
+      {% if e.summary %}<p>{{ e.summary }}</p>{% endif %}
+      {% if e.points %}<ul>{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+  </details>
   {% endfor %}
 </div>
 
-<div class="section-head"><h2>Red team / offensive security</h2></div>
-<div class="cards">
-  {% for w in site.data.work.red %}{% include work-card.html item=w %}{% endfor %}
+<div class="section-head"><h2><i class="bi bi-mortarboard head-icon" aria-hidden="true"></i>Education</h2></div>
+<div class="accordion">
+  {% for e in site.data.experience.education %}
+  <details class="accordion-item">
+    <summary><span class="acc-icon"><i class="bi bi-mortarboard" aria-hidden="true"></i></span><span class="acc-text"><span class="acc-role">{{ e.role }}</span><span class="acc-meta">{{ e.org }} · {{ e.dates }}</span></span></summary>
+    {% if e.summary or e.points %}<div class="acc-body">
+      {% if e.summary %}<p>{{ e.summary }}</p>{% endif %}
+      {% if e.points %}<ul>{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+    </div>{% endif %}
+  </details>
+  {% endfor %}
 </div>
 
-<div class="section-head"><h2>Blue team / DFIR &amp; security operations</h2></div>
-<div class="cards">
-  {% for w in site.data.work.blue %}{% include work-card.html item=w %}{% endfor %}
+<div class="section-head"><h2><i class="bi bi-people head-icon" aria-hidden="true"></i>Leadership, volunteering &amp; part-time roles</h2></div>
+<div class="accordion">
+  {% for e in site.data.experience.leadership %}
+  <details class="accordion-item">
+    <summary><span class="acc-icon"><i class="bi bi-people" aria-hidden="true"></i></span><span class="acc-text"><span class="acc-role">{{ e.role }}</span><span class="acc-meta">{{ e.org }} · {{ e.dates }}</span></span></summary>
+    {% if e.summary or e.points %}<div class="acc-body">
+      {% if e.summary %}<p>{{ e.summary }}</p>{% endif %}
+      {% if e.points %}<ul>{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+    </div>{% endif %}
+  </details>
+  {% endfor %}
 </div>
-
-<div class="section-head"><h2>Experience</h2></div>
-<div class="timeline">
-  {% for e in site.data.experience.professional %}{% include timeline-item.html item=e %}{% endfor %}
 </div>
-
-<details class="more">
-  <summary>Education</summary>
-  <div class="timeline">{% for e in site.data.experience.education %}{% include timeline-item.html item=e %}{% endfor %}</div>
-</details>
-<details class="more">
-  <summary>Leadership, volunteering &amp; part-time roles</summary>
-  <div class="timeline">{% for e in site.data.experience.leadership %}{% include timeline-item.html item=e %}{% endfor %}</div>
-</details>
-
-<div class="section-head"><h2>Interesting papers</h2></div>
-<p>Papers I wrote during my undergraduate modules.</p>
-<ul class="papers">
-  {% for p in site.data.papers %}<li><a href="{{ p.file | relative_url }}">{{ p.title }}</a><p>{{ p.blurb }}</p></li>{% endfor %}
-</ul>

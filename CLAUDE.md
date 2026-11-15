@@ -26,7 +26,7 @@ docker run --rm -it -p 4000:4000 -v "$PWD":/srv -v jekyll-gems:/usr/local/bundle
 - **Posts** use `category:` = `certs | resources | labs | travel`. Labels, blurbs and filter-chip order come from `post_categories` in `_config.yml`. Permalinks are `/:categories/:title/`. `blog/index.html` filters client-side via `assets/js/filter.js` (supports `?c=<category>`).
 - **Cert reviews** (`layout: cert-review`) set `cert:` to an `id` in `_data/certs.yml`, which links the verification badge and adds a "My review" link on the Work page. Front matter fields (`cost`, `prep_time`, `difficulty`, `exam_format`, `would_recommend`, `resources:`) fill the fact box and the "Resources I used" list.
 - **Drafts** in `_drafts/` are never published; most starter posts sit there with `TODO`s for the owner to write. `POSTING.md` is the owner-facing how-to; keep it in sync with layout or front-matter changes.
-- **Styling** is one hand-written `assets/css/main.scss` built on CSS variables, with dark mode via `prefers-color-scheme`. There is no framework or vendor CSS.
+- **Styling** is one hand-written `assets/css/main.scss` built on CSS variables, light theme only (no dark mode). There is no framework or vendor CSS.
 - **Untouched legacy files** (`numerology*.html`, `Reports/`, `Projects/`, `Files/`) have no front matter and are copied through as-is. Old URLs (`about-me.html`, `portfolio.html`) are kept alive with `redirect_from`.
 
 ## Hidden CTF ("Launchpad")

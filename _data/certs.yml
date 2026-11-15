@@ -39,5 +39,11 @@
   name: ACRTP
   full: Amazon Cloud Red Team Professional
   issuer: Pwned Labs
-  verify: https://pwnedlabs.io/certifications
+  verify: https://www.credly.com/badges/bc873748-a898-499f-97e9-932e2a20c728
+  status: earned
+- id: caisp
+  name: CAISP
+  full: Certified AI Security Professional
+  issuer: Practical DevSecOps
+  verify: https://www.practical-devsecops.com/certified-ai-security-professional/
   status: in-progress

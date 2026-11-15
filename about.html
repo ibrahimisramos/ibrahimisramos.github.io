@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: default
 title: About me
 kicker: Who am I?
 permalink: /about/
@@ -7,27 +7,95 @@ redirect_from: /about-me.html
 description: About Ibrahim Sharul, a penetration tester at Vantage Point Security in Singapore, facilitator and traveller.
 lede: Pentester by trade, facilitator by heart, traveller whenever the leave balance allows.
 ---
-<div class="prose">
-  <p>Hello! Ibrahim here. I'm a Penetration Tester and Cyber Security Consultant at Vantage Point Security, where I test web, API, mobile and thick-client applications. I hold OSCP+, BSCP, CRT, BTL1, CIPT and Google ACE. I graduated from the National University of Singapore with a Bachelor's in Information Security, after a Diploma in Cyber Security and Forensics at Nanyang Polytechnic.</p>
-  <p>Before going offensive, I spent my early career on the blue side in the Ministry of Home Affairs and Cyber Security Agency SOCs. Seeing attacks from the defender's chair still shapes how I write findings.</p>
-  <p>Beyond the technical side, I love to learn new things and impact youth through The Astronauts Collective, a charity I volunteer with. In my free time I read self-help books, head to BFT, watch dramas and plan my next trip.</p>
+<div class="wrap page about-page">
+  <section class="about-hero">
+    <div>
+      <p class="kicker">Who am I?</p>
+      <h1>Hi, I'm Ibrahim.</h1>
+      <p class="lede">Pentester by trade, facilitator by heart, traveller whenever the leave balance allows.</p>
+      <ul class="quick-facts">
+        <li><i class="bi bi-shield-lock" aria-hidden="true"></i>Pentester at Vantage Point Security</li>
+        <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Singapore</li>
+        <li><i class="bi bi-globe-asia-australia" aria-hidden="true"></i>47 countries</li>
+        <li><i class="bi bi-translate" aria-hidden="true"></i>4 languages</li>
+        <li><i class="bi bi-heart" aria-hidden="true"></i>Volunteer, The Astronauts Collective</li>
+      </ul>
+      <div class="hero-actions">
+        <a class="btn primary" href="{{ '/work/' | relative_url }}">My work</a>
+        <a class="btn" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Resume (PDF)</a>
+      </div>
+    </div>
+    <img class="about-photo" src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="Portrait of Ibrahim Sharul">
+  </section>
 
-  <h2>Personality</h2>
-  <p>My CliftonStrengths are <strong>Connectedness, Input, Communication, Strategic</strong> and <strong>Individualisation</strong>. Translated out of corporate-speak, I collect a lot of information, see how it connects to the bigger picture, and then can't stop talking about it. Useful for security work (lots of disparate signals, one underlying story), slightly less useful at parties.</p>
-  <p>I'm happily married to Divyasri, who keeps me grounded and occasionally reminds me that not every conversation needs to become a structured framework.</p>
-  <p>I read self-help and personal development books the way some people watch true crime: a little too enthusiastically, and with strong opinions about which authors are overrated.</p>
-</div>
+  <div class="section-head"><h2>My path so far</h2><a href="{{ '/work/' | relative_url }}">Full experience →</a></div>
+  <ol class="path">
+    <li><span class="yr">2015</span><strong>Nanyang Polytechnic</strong><small>Diploma in Cyber Security &amp; Forensics</small></li>
+    <li><span class="yr">2017</span><strong>CSA SOC</strong><small>SOC intern</small></li>
+    <li><span class="yr">2019</span><strong>MHA SOC</strong><small>Cyber security analyst</small></li>
+    <li><span class="yr">2020</span><strong>NUS</strong><small>Information Security + University Scholars Programme</small></li>
+    <li class="now-step"><span class="yr">2025</span><strong>Vantage Point Security</strong><small>Penetration tester</small></li>
+  </ol>
 
-<div class="section-head"><h2>Fun &amp; interesting things</h2></div>
+  <div class="section-head"><h2>What I bring to every conversation (and party)</h2></div>
+  <div class="convo-grid">
+    <div class="convo c-blue"><i class="bi bi-airplane" aria-hidden="true"></i><h3>Stories from 47 countries</h3><p>From a 24-hour transit in Doha to four months in the Netherlands, I've collected a lot of perspectives on how people live.</p></div>
+    <div class="convo c-purple"><i class="bi bi-brightness-high" aria-hidden="true"></i><h3>My journey to Christianity</h3><p>Finding faith changed how I see people and purpose. Happy to share the story if you ask.</p></div>
+    <div class="convo c-green"><i class="bi bi-translate" aria-hidden="true"></i><h3>Four languages, many cultures</h3><p>English, Tamil, Malay and Hindi, plus enough Mandarin to emcee once.</p></div>
+    <div class="convo c-orange"><i class="bi bi-people" aria-hidden="true"></i><h3>A facilitator's curiosity</h3><p>Years of running programmes for students taught me to ask good questions and actually listen.</p></div>
+    <div class="convo c-red"><i class="bi bi-book" aria-hidden="true"></i><h3>Too many book recommendations</h3><p>Self-help, mostly. You have been warned.</p></div>
+    <div class="convo c-teal"><i class="bi bi-shield-lock" aria-hidden="true"></i><h3>Hacker stories (the legal kind)</h3><p>How attackers think, minus anything confidential, plus tips to keep your own accounts safe.</p></div>
+  </div>
+
+  <div class="section-head"><h2>What makes me tick</h2></div>
+  <p>My top five CliftonStrengths, and how they show up in the way I solve problems and bring people together:</p>
+  <ol class="strengths">
+    <li class="strength rel"><span class="strength-rank">1</span><strong>Connectedness</strong><small>Relationship building</small><span class="strength-why">I see how people and ideas link up, and love turning them into a community.</span></li>
+    <li class="strength think"><span class="strength-rank">2</span><strong>Input</strong><small>Strategic thinking</small><span class="strength-why">I collect books, ideas and stories, then pass on whatever helps someone else.</span></li>
+    <li class="strength infl"><span class="strength-rank">3</span><strong>Communication</strong><small>Influencing</small><span class="strength-why">I make hard things simple, whether it is a classroom of students or a room of friends.</span></li>
+    <li class="strength think"><span class="strength-rank">4</span><strong>Strategic</strong><small>Strategic thinking</small><span class="strength-why">Faced with a problem, I quickly see the different routes and pick the one that works.</span></li>
+    <li class="strength rel"><span class="strength-rank">5</span><strong>Individualisation</strong><small>Relationship building</small><span class="strength-why">I notice what makes each person different and meet them where they are.</span></li>
+  </ol>
+
+<div class="section-head"><h2>Fun &amp; interesting things about me</h2></div>
 <div class="facts">
-  <div class="fact"><p class="kicker">December</p><h3>Training for the Penang Bridge Marathon</h3><p>My first full 42km. The absurd part: I don't enjoy running, and I'm coming back from an ankle injury. So the plan is strength work, cycling and swimming first, a run/walk strategy on race day, and finishing as the only goal.</p></div>
   <div class="fact"><p class="kicker">Personal project</p><h3>Built a numerology report generator</h3><p>I wrote an independent study on numerology and personal identity in Singapore, then built a <a href="{{ '/numerology.html' | relative_url }}">calculator that generates PDF reports</a>. Equal parts curiosity about belief systems and an excuse to write fun code.</p></div>
-  <div class="fact"><p class="kicker">Ongoing</p><h3>47 countries and counting</h3><p>Poland and a deeper Latin America trip are next. The Latin America trip may line up with graduate studies abroad, so I might as well make the most of the time zone.</p></div>
+  <div class="fact"><p class="kicker">Ongoing</p><h3>47 countries and counting</h3><p>Next up: Poland and the countries around it, for a friend's wedding. Any excuse to tick off a few more.</p></div>
+  <div class="fact"><p class="kicker">Summer 2023</p><h3>Three weeks of summer school in Barcelona</h3><p>Squeezed in a day trip to France and Andorra on the side. The <a href="{{ '/travel/3-weeks-summer-school-in-barcelona-highlights/' | relative_url }}">full story is here</a>.</p></div>
   <div class="fact"><p class="kicker">English, Tamil, Malay, Hindi</p><h3>Four languages, one brain</h3><p>Grew up speaking all four. Unexpectedly useful for everything from OSINT to ordering food correctly on every one of those 47 trips.</p></div>
   <div class="fact"><p class="kicker">CSA SOC internship</p><h3>Emceed in Mandarin</h3><p>I emceed a Chinese New Year celebration attended by CSA's senior leadership, using Mandarin greetings I'd picked up. Not fluent, but fluent enough for one afternoon.</p></div>
+  <div class="fact"><p class="kicker">Family</p><h3>Happily married to Divyasri</h3><p>She keeps me grounded and occasionally reminds me that not every conversation needs to become a structured framework.</p></div>
+  <div class="fact"><p class="kicker">Bookshelf</p><h3>Self-help superfan</h3><p>I read personal development books the way some people watch true crime: a little too enthusiastically, and with strong opinions about which authors are overrated.</p></div>
   <div class="fact"><p class="kicker">True story</p><h3>I have never bought my own bubble tea</h3><p>Every cup I've ever had was paid for by someone else. I'm not sure how this happened or how long I can keep it going, but here we are.</p></div>
 </div>
 
-<div class="section-head"><h2>Travel</h2><a href="{{ '/travel/' | relative_url }}">Travel stories →</a></div>
-<p>I'm aiming for 50 countries by age 50, currently at 47 (about 24% of the world).</p>
+<div class="section-head"><h2>Interesting papers</h2></div>
+<p>Papers I wrote during my undergraduate modules, on everything from data protection law to Bollywood.</p>
+<div class="paper-grid">
+  {% for p in site.data.papers %}
+  <a class="paper" href="{{ p.file | relative_url }}">
+    <span class="paper-icon {{ p.color }}"><i class="bi bi-{{ p.icon }}" aria-hidden="true"></i></span>
+    <span class="kicker">{{ p.topic }}</span>
+    <strong>{{ p.title }}</strong>
+    <span class="paper-blurb">{{ p.blurb }}</span>
+    <span class="paper-cta"><i class="bi bi-file-earmark-pdf" aria-hidden="true"></i> Read the PDF</span>
+  </a>
+  {% endfor %}
+</div>
+
+<div class="section-head"><h2>Travel</h2><a href="{{ '/blog/' | relative_url }}?c=travel">Travel stories →</a></div>
+<p>I'm at 47 countries (about 24% of the world) and aiming for 50 by age 30. The long-term goal? I do want to see every country in the world.</p>
+<div class="trip-mosaic">
+  {% for t in site.categories.travel limit: 6 %}
+  <a class="trip" href="{{ t.url | relative_url }}" style="background-image: url('{{ t.cover | relative_url }}')"><span>{{ t.location }}</span></a>
+  {% endfor %}
+</div>
+{% if site.data.travel_photos and site.data.travel_photos.size > 0 %}
+<div class="photo-grid">
+  {% for ph in site.data.travel_photos %}
+  <figure><img src="{{ ph.src | relative_url }}" alt="{{ ph.alt }}" loading="lazy">{% if ph.caption %}<figcaption>{{ ph.caption }}</figcaption>{% endif %}</figure>
+  {% endfor %}
+</div>
+{% endif %}
 {% include travel-map.html %}
+</div>

@@ -2,51 +2,61 @@
 layout: default
 title: Ibrahim Sharul
 description: Penetration tester in Singapore. Cert reviews, resource lists, lab logs and travel stories.
+scripts: [/assets/js/hero.js, /assets/js/filter.js]
 ---
 <!-- psst, curious one. Robots get told where NOT to go. Maybe you should read what they're told. -->
-<div class="wrap">
-  <section class="hero">
-    <div>
-      <p class="whoami">$ whoami</p>
-      <h1>Ibrahim Sharul</h1>
-      <p class="lede">I break things for a living as a penetration tester at Vantage Point Security, then write about how. Off the clock I teach youth about careers in tech, plan my next trip, and read too many self-help books.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
-        <a class="btn" href="{{ '/work/' | relative_url }}">See my work</a>
-        <a class="btn" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Resume (PDF)</a>
-      </div>
+<section class="hero-slides" aria-label="Welcome">
+  {% for s in site.data.hero_slides %}
+  <div class="slide{% if forloop.first %} is-active{% endif %}" data-role="{{ s.role }}" style="background-image: url('{{ s.src | relative_url }}'){% if s.pos %}; background-position: {{ s.pos }}{% endif %}" role="img" aria-label="{{ s.alt }}"></div>
+  {% endfor %}
+  <div class="hero-text">
+    <h1>Ibrahim Sharul</h1>
+    <p>I'm a <span class="typed" data-items="Penetration Tester,Cyber Security Consultant,Facilitator/Trainer,Traveller">Penetration Tester</span></p>
+    <div class="hero-actions">
+      <a class="btn primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+      <a class="btn light" href="{{ '/Files/Ibrahim Sharul Resume.pdf' | relative_url }}">Resume (PDF)</a>
     </div>
-    <img class="hero-photo" src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="Portrait of Ibrahim Sharul">
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="intro">
+    <img class="intro-photo" src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="Portrait of Ibrahim Sharul">
+    <div>
+      <h2 class="title-bar">About</h2>
+      <h3 class="whoami">$whoami</h3>
+      <p>Hello! Ibrahim here, welcome to my website. I am a Penetration Tester / Cyber Security Consultant at Vantage Point Security, where I deliver offensive security assessments across web, API, mobile, thick client and cloud, as well as host configuration reviews.</p>
+      <p>Beyond the technical side, I love to learn new things and impact youth through The Astronauts Collective, a charity I volunteer with. In my free time, I like to read self-help books, head to BFT gym, watch dramas and plan my next travel!</p>
+      <a class="btn primary" href="{{ '/about/' | relative_url }}">Get to know me</a>
+    </div>
   </section>
 
   <aside class="now" aria-label="What I'm up to">
     <p class="kicker">Currently</p>
     <ul>
-      <li>Working towards <strong>ACRTP</strong> (AWS red teaming) on Pwned Labs</li>
-      <li>Training for my first full marathon across the Penang Bridge</li>
+      <li>Working towards <strong>CAISP</strong> (AI security) with Practical DevSecOps</li>
       <li>Volunteering with The Astronauts Collective</li>
-      <li>47 countries visited, aiming for 50</li>
+      <li>47 countries visited, aiming for 50 by 30</li>
     </ul>
   </aside>
 
-  <div class="section-head"><h2>Latest writing</h2><a href="{{ '/blog/' | relative_url }}">All posts →</a></div>
-  {% assign latest = site.posts | slice: 0, 6 %}
-  {% if latest.size > 0 %}
-  <div class="post-grid">
-    {% for post in latest %}{% include post-card.html post=post %}{% endfor %}
+  <div class="section-head"><h2>Latest writing</h2><a href="{{ '/blog/' | relative_url }}" data-filter-more data-base="{{ '/blog/' | relative_url }}">All posts →</a></div>
+  {% assign published = site.posts | where_exp: "p", "p.draft != true" %}
+  {% if published.size > 0 %}
+  <div class="chips" role="group" aria-label="Filter writing">
+    <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" type="button" data-filter="cyber" aria-pressed="false">Cyber</button>
+    <button class="chip" type="button" data-filter="travel" aria-pressed="false">Travel</button>
+  </div>
+  <div class="post-grid" data-filter-grid data-limit="6">
+    {% for post in published %}{% include post-card.html post=post %}{% endfor %}
   </div>
   {% else %}
   <p class="empty">First posts are on the way: cert reviews, lab logs and travel stories.</p>
   {% endif %}
 
-  <div class="section-head"><h2>Certifications</h2><a href="{{ '/work/' | relative_url }}#certs">Details →</a></div>
-  <div class="cert-grid">
-    {% for c in site.data.certs %}
-    <a class="cert" href="{{ c.verify }}">
-      {% include cert-card.html cert=c %}
-    </a>
-    {% endfor %}
-  </div>
+  <div class="section-head"><h2>Certifications</h2><a href="{{ '/work/' | relative_url }}#certs">See them all →</a></div>
+  {% include cert-grid.html %}
 
   <div class="section-head"><h2>Side projects</h2></div>
   <div class="cards">
@@ -57,10 +67,9 @@ description: Penetration tester in Singapore. Cert reviews, resource lists, lab 
       <div class="links"><a href="{{ '/numerology.html' | relative_url }}">Try the calculator →</a><a href="{{ "/Reports/Contextualizing Numerology's Pertinence to Personal Identity Construction in Singapore.pdf" | relative_url }}">Read the paper</a></div>
     </div>
     <div class="card">
-      <p class="kicker">Practice</p>
-      <h3>Blue Team Labs Online</h3>
-      <p>25+ investigations across DFIR, security operations, threat intel and reverse engineering.</p>
-      <div class="links"><a href="https://blueteamlabs.online/public/user/ibrahimisramos">My BTLO profile →</a></div>
+      <p class="kicker">Home lab · In progress</p>
+      <h3>FlareVM Malware Analysis Lab</h3>
+      <p>Building a FlareVM lab for malware analysis and reverse engineering with IDA Pro, OllyDbg and, next, Ghidra.</p>
     </div>
   </div>
 </div>

@@ -1,14 +1,25 @@
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="{{ '/' | relative_url }}">Ibrahim Sharul</a>
-    <nav class="site-nav" aria-label="Main">
-      {% assign nav = "Home:/,About:/about/,Work:/work/,Blog:/blog/,Travel:/travel/" | split: "," %}
+    <a class="brand" href="{{ '/' | relative_url }}"><img src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="">{{ site.author.name }}</a>
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu"><i class="bi bi-list" aria-hidden="true"></i></button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <div class="drawer-profile" aria-hidden="true">
+        <img src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="">
+        <strong>{{ site.author.name }}</strong>
+      </div>
+      {% assign nav = "Home:/:house,About:/about/:person,Work:/work/:briefcase,Blog:/blog/:journal-text" | split: "," %}
       {% for item in nav %}
         {% assign parts = item | split: ":" %}
         {% assign href = parts[1] %}
         {% assign active = false %}{% assign prefix = page.url | slice: 0, href.size %}{% if href == "/" %}{% if page.url == "/" %}{% assign active = true %}{% endif %}{% elsif prefix == href %}{% assign active = true %}{% endif %}
-        <a href="{{ href | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ parts[0] }}</a>
+        <a href="{{ href | relative_url }}"{% if active %} aria-current="page"{% endif %}><i class="bi bi-{{ parts[2] }}" aria-hidden="true"></i><span>{{ parts[0] }}</span></a>
       {% endfor %}
+      <span class="social-links">
+        {% for link in site.social.links %}
+        {% if link contains "github" %}{% assign icon = "github" %}{% assign label = "GitHub" %}{% elsif link contains "linkedin" %}{% assign icon = "linkedin" %}{% assign label = "LinkedIn" %}{% elsif link contains "instagram" %}{% assign icon = "instagram" %}{% assign label = "Instagram" %}{% elsif link contains "t.me" %}{% assign icon = "telegram" %}{% assign label = "Telegram" %}{% else %}{% assign icon = "link-45deg" %}{% assign label = link %}{% endif %}
+        <a href="{{ link }}" aria-label="{{ label }}"><i class="bi bi-{{ icon }}" aria-hidden="true"></i></a>
+        {% endfor %}
+      </span>
     </nav>
   </div>
 </header>

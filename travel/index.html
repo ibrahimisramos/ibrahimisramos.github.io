@@ -1,17 +1,4 @@
 ---
-layout: page
-title: Travel
-redirect_from: /travel-post.html
-kicker: 47 countries and counting
-lede: Stories from the road. Aiming for 50 countries by 50.
+redirect_to: /blog/?c=travel
+sitemap: false
 ---
-{% assign trips = site.categories.travel %}
-{% if trips and trips.size > 0 %}
-<div class="post-grid">
-  {% for post in trips %}{% include post-card.html post=post %}{% endfor %}
-</div>
-{% else %}
-<p class="empty">Travel stories coming soon. Doha is first up.</p>
-{% endif %}
-<div class="section-head"><h2>Where I've been</h2></div>
-{% include travel-map.html %}

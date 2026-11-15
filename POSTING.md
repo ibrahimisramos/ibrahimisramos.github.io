@@ -17,7 +17,7 @@ Drafts in `_drafts/` are never published, so park half-finished posts there.
 | `labs`      | Lab log      | default (no layout line)       |
 | `travel`    | Travel       | `layout: travel`               |
 
-URLs come out as `/<category>/<slug>/`, e.g. `/travel/48-hours-in-doha/`.
+URLs come out as `/<category>/<slug>/`, e.g. `/travel/paris-trip/`.
 
 ## Cert reviews
 

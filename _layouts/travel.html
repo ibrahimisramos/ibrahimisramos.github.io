@@ -3,11 +3,11 @@ layout: default
 ---
 <article class="wrap article travel-article">
   <header class="article-head">
-    <p class="kicker"><a href="{{ '/travel/' | relative_url }}">Travel</a> · {{ page.location }}</p>
+    <p class="kicker"><a href="{{ '/blog/' | relative_url }}?c=travel">Travel</a> · {{ page.location }}</p>
     <h1>{{ page.title }}</h1>
     {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
   </header>
-  {% if page.cover %}<img class="article-cover" src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}">{% endif %}
+  {% if page.cover and page.show_cover != false %}<img class="article-cover" src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}">{% endif %}
   <aside class="fact-box trip" aria-label="Trip details">
     <dl>
       <div><dt>Where</dt><dd>{{ page.location }}</dd></div>
@@ -19,5 +19,5 @@ layout: default
   </aside>
   {{ content }}
   {% include tags.html tags=page.tags %}
-  <footer class="article-foot"><a href="{{ '/travel/' | relative_url }}">← All travel posts</a></footer>
+  <footer class="article-foot"><a href="{{ '/blog/' | relative_url }}?c=travel">← All travel posts</a></footer>
 </article>

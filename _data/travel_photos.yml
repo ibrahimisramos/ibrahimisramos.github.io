@@ -1,0 +1,5 @@
+# Photos shown on the About page under "Travel". Put files in assets/img/travel/
+# (resize to ~1200px wide first). The gallery stays hidden until this list has entries.
+# - { src: /assets/img/travel/barcelona.jpg, alt: "Me at Park Güell", caption: "Barcelona, 2023" }
+- { src: /assets/img/travel/pisa.jpg, alt: "Ibrahim pretending to hold up the Leaning Tower of Pisa", caption: "Doing my bit to hold up Pisa" }
+- { src: /assets/img/travel/wedding-dinner-europe.jpg, alt: "Ibrahim and a long table of friends at a wedding celebration dinner in Europe", caption: "Wedding celebration dinner with friends I made in Europe" }
