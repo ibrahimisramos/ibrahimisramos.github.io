@@ -3,7 +3,7 @@ layout: null
 sitemap: false
 ---
 User-agent: *
-# Nothing to see here. Especially not the launchpad.
-Disallow: /launchpad-7f3a/
+# Nothing to see here. Especially not the secret portal.
+Disallow: /secret-ctf-portal/
 
 Sitemap: {{ site.url }}/sitemap.xml

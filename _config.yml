@@ -44,7 +44,7 @@ plugins:
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: post }
-  - scope: { path: "launchpad-7f3a" }
+  - scope: { path: "secret-ctf-portal" }
     values: { layout: ctf, sitemap: false, noindex: true }
 
 exclude:

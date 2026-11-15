@@ -1,6 +1,6 @@
 ---
 title: Hall Pass
-permalink: /launchpad-7f3a/hall-pass/
+permalink: /secret-ctf-portal/hall-pass/
 slug_id: hall-pass
 order: 3
 track: Web
@@ -18,7 +18,7 @@ real_world: |
 <div class="terminal" id="pass">Checking your hall pass...</div>
 <script>
   if (!/(^|; )role=/.test(document.cookie)) {
-    document.cookie = 'role=student; path=/launchpad-7f3a/; SameSite=Lax';
+    document.cookie = 'role=student; path=/secret-ctf-portal/; SameSite=Lax';
   }
   // A student may edit the cookie or add a second one, so look at every role= cookie.
   var roles = document.cookie.split('; ').filter(function (c) { return c.indexOf('role=') === 0; }).map(function (c) {
