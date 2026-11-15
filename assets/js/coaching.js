@@ -26,7 +26,7 @@
   // Hero word pairs.
   var before = document.querySelector("[data-tx-before]");
   var after = document.querySelector("[data-tx-after]");
-  var pairs = [["stuck", "clear"], ["unsure", "confident"], ["drifting", "intentional"], ["overwhelmed", "focused"]];
+  var pairs = [["conflicted", "clear"], ["torn", "true"], ["expected", "chosen"], ["doubting", "proud"]];
   if (before && after && !reduce) {
     var i = 0;
     setInterval(function () {
