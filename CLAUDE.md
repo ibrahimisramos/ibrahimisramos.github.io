@@ -10,7 +10,7 @@ Personal site for Ibrahim Sharul (pentester at Vantage Point Security, trainer, 
 - Push over the existing SSH remote. Never set a credential helper or write `~/.git-credentials`.
 - **Never invent facts** about the owner (dates, names, roles, numbers). Use a clear placeholder and ask. Unfinished posts stay in `_drafts/` (kept hidden on purpose) until the owner fills them.
 - **Photos:** resize (about 1600px for posts, 2000–2600px for hero slides), re-encode with Pillow and drop EXIF so no GPS goes out. The only deliberate exception is the CTF postcard (`assets/img/ctf/postcard.jpg`), whose EXIF carries the challenge flag and fake GPS on purpose. Re-saving it must pass the EXIF through.
-- Owner's design preferences: light theme only, old iPortfolio colours (accent `#149ddd`, headings `#173b6c`), top nav on desktop with the dark drawer only on mobile, and round cert badges. They rejected the bento layout. Never tease the CTF on the visible site; it's a surprise.
+- Owner's design preferences: light theme only, old iPortfolio colours (accent `#149ddd`, headings `#173b6c`), top nav on desktop with the dark drawer only on mobile, and round cert badges. They rejected the bento layout. The only visible mention of the CTF is one low-key fact card on About, with no link; don't add more or link the portal path.
 
 ## Build and preview
 
