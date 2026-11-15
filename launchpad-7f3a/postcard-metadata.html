@@ -10,10 +10,10 @@ hints:
   - Photos carry hidden information called **metadata** (or **EXIF**): the camera, the date, sometimes even GPS location and comments.
   - Right-click the image → **Save image as**. Then open [CyberChef](https://gchq.github.io/CyberChef/), drag the image into **Input**, and use the **Extract EXIF** recipe.
 learned: |
-  **EXIF metadata** is extra information stored inside image files. Phones can record when and where a photo was taken. Here, someone hid a message in the image's description fields.
+  **EXIF metadata** is extra information stored inside image files. Phones can record when and where a photo was taken. Here, someone hid a message in the image's description fields. This postcard also carries **GPS coordinates**: paste the latitude and longitude into Google Maps and you'll see exactly where it was "taken". That's why it's worth stripping location data before you post photos online.
 real_world: |
   Digital forensics investigators use metadata to work out where and when photos were taken. Journalists use it to verify images. And people have accidentally revealed their home location by posting photos with GPS data still inside.
 ---
 <p>Our agent sent a postcard from a trip abroad. It looks like an ordinary picture, but agents never send ordinary pictures.</p>
-<p><img src="{{ '/assets/img/ctf/postcard.jpg' | relative_url }}" alt="A postcard reading 'Greetings from the Launchpad'" width="800" height="500"></p>
+<p><img src="{{ '/assets/img/ctf/postcard.jpg' | relative_url }}" alt="A postcard of a green mountain valley reading 'Greetings from the mountains!'" width="1200" height="800"></p>
 <p>Look <em>inside</em> the image file, not at it.</p>
