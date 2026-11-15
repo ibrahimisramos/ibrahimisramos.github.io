@@ -7,7 +7,7 @@
         <img src="{{ '/assets/img/profile-img.jpg' | relative_url }}" alt="">
         <strong>{{ site.author.name }}</strong>
       </div>
-      {% assign nav = "Home:/:house,About:/about/:person,Work:/work/:briefcase,Blog:/blog/:journal-text" | split: "," %}
+      {% assign nav = "Home:/:house,About:/about/:person,Work:/work/:briefcase,Blog:/blog/:journal-text,Coaching:/coaching/:compass" | split: "," %}
       {% for item in nav %}
         {% assign parts = item | split: ":" %}
         {% assign href = parts[1] %}
