@@ -5,7 +5,7 @@ slug_id: debug-mode
 order: 5
 track: Web
 difficulty: Medium
-flag_hash: 725cce64c3ec32e0ee1df69e33ecc905c029bf0119812c82471f392c43b88fa8
+flag_hash: e9228727775b4a0138b1e57f4b15bd9e4f1cb5f0476f13695ddc8a666998fd74
 hints:
   - The page's JavaScript reads something from the **web address (URL)** before it decides what to show. View the source to see what.
   - Things after a `?` in a URL are called **parameters**. Try adding `?debug=true` to the end of this page's address and press Enter.
@@ -20,7 +20,7 @@ real_world: |
   var params = new URLSearchParams(window.location.search);
   if (params.get('debug') === 'true') {
     var p = document.getElementById('panel');
-    p.textContent = '[DEBUG MODE]\nengine_temp=OK\nfuel=97%\nsecret=' + atob('SUJSe2RlYnVnX21vZGVfbGVmdF9vbn0=');
+    p.textContent = '[DEBUG MODE]\nengine_temp=OK\nfuel=97%\nsecret=' + atob('Q1RGe2RlYnVnX21vZGVfbGVmdF9vbn0=');
     p.style.whiteSpace = 'pre-wrap';
   }
 </script>

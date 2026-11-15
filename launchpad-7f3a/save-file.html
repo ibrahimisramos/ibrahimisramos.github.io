@@ -5,7 +5,7 @@ slug_id: save-file
 order: 4
 track: Web
 difficulty: Medium
-flag_hash: 3a0c4ba5a0421ce025729b2fb2e5215629a8196a33e9b3d7955f4bea92bdf709
+flag_hash: 8a4fa577193134439e61ba4464c31f1b354db231080e1b0ce613e0f3b476dd40
 hints:
   - Like a video game, this page saves your progress somewhere in your browser. Where?
   - Press `F12` → **Application** (or **Storage**) → **Local Storage**. Find `launchpad-game`, change the level to `99`, and refresh the page.
@@ -27,7 +27,7 @@ real_world: |
   function render() {
     var s = load();
     var out = 'Player: ' + s.player + '\nLevel: ' + s.level + '\nTraining sessions left today: ' + s.trainsLeft;
-    if (Number(s.level) >= 99) out += '\n\n🏅 Commander badge unlocked: ' + atob('SUJSe2xvY2FsX3N0b3JhZ2VfaXNfZWRpdGFibGV9');
+    if (Number(s.level) >= 99) out += '\n\n🏅 Commander badge unlocked: ' + atob('Q1RGe2xvY2FsX3N0b3JhZ2VfaXNfZWRpdGFibGV9');
     var g = document.getElementById('game'); g.textContent = out; g.style.whiteSpace = 'pre-wrap';
   }
   document.getElementById('train').addEventListener('click', function () {

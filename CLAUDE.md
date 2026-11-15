@@ -34,7 +34,7 @@ docker run --rm -it -p 4000:4000 -v "$PWD":/srv -v jekyll-gems:/usr/local/bundle
 - The portal at `/launchpad-7f3a/` is for teaching secondary school students. Every challenge must be solvable in a browser with DevTools, view-source or CyberChef; nothing to install.
 - **Clue chain:** the HTML comment in `index.html` → `robots.txt` (`Disallow`) → portal. Renaming the path means updating all three, plus the `launchpad-7f3a` defaults scope in `_config.yml`, which applies `layout: ctf`, `sitemap: false` and `noindex`.
 - Each challenge page has front matter: `permalink`, `slug_id`, `order`, `track`, `difficulty`, `flag_hash`, `hints`, `learned`, `real_world`. The portal index lists every page with `order`.
-- **Flag checking:** `assets/js/ctf.js` lowercases the trimmed input, SHA-256s it, and compares the result to `flag_hash`. Hashes must therefore come from the lowercased flag. Use `ruby scripts/hash-flag.rb 'IBR{...}'`.
+- **Flag checking:** `assets/js/ctf.js` lowercases the trimmed input, SHA-256s it, and compares the result to `flag_hash`. Hashes must therefore come from the lowercased flag. Use `ruby scripts/hash-flag.rb 'CTF{...}'`.
 - **Plaintext flags never go in the repo.** They live outside it in `../ctf-flags.local.txt`. The exception is flags that the challenge deliberately hides in page source.
 - Progress is stored in localStorage under `launchpad-solved`.
 - `ctf.js` finds feedback with `document.querySelector('.flag-result')`. Do not reuse the `flag-result` class for other elements on a challenge page.

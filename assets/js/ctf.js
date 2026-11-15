@@ -46,9 +46,9 @@
           debrief.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           result.className = 'flag-result bad';
-          result.textContent = guess.indexOf('ibr{') === 0
+          result.textContent = guess.indexOf('ctf{') === 0
             ? '✗ Not quite. Check for typos, or open a hint.'
-            : '✗ Flags look like IBR{something_here}.';
+            : '✗ Flags look like CTF{something_here}.';
         }
       });
     });

@@ -5,7 +5,7 @@ slug_id: gatekeeper
 order: 2
 track: Web
 difficulty: Easy
-flag_hash: 6e871f9ad62c48b13081faf26f47decebda8218fc5c56052695c8f67a147f3f5
+flag_hash: 402e4b31e094a2908aee68f03eafa2de2dfcbad91edf9978ef9f9d0667bce9ef
 hints:
   - Where does this login form check your password? On a server far away, or right here in your browser?
   - View the page source and look for the `<script>` near the login box. The username and password are written right there.
@@ -30,7 +30,7 @@ real_world: |
     var msg = document.getElementById('gate-msg');
     if (document.getElementById('u').value === CREW_USER && document.getElementById('p').value === CREW_PASS) {
       msg.className = 'flag-result ok';
-      msg.textContent = 'Welcome aboard! Your flag: ' + atob('SUJSe25ldmVyX3RydXN0X3RoZV9jbGllbnR9');
+      msg.textContent = 'Welcome aboard! Your flag: ' + atob('Q1RGe25ldmVyX3RydXN0X3RoZV9jbGllbnR9');
     } else {
       msg.className = 'flag-result bad';
       msg.textContent = 'Access denied.';

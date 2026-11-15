@@ -43,5 +43,5 @@ Then open http://localhost:4000. `--drafts` shows `_drafts/` posts too (local on
 
 ## CTF portal
 
-See `scripts/README-ctf.md`. Never commit plaintext flags; run `ruby scripts/hash-flag.rb 'IBR{...}'`
+See `scripts/README-ctf.md`. Never commit plaintext flags; run `ruby scripts/hash-flag.rb 'CTF{...}'`
 and paste the hash into the challenge's `flag_hash:`.
