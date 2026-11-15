@@ -1,0 +1,14 @@
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p class="footer-sign">Ibrahim Sharul · Singapore</p>
+    <p class="footer-links">
+      {% for link in site.social.links %}
+      {% if link contains "github" %}{% assign label = "GitHub" %}{% elsif link contains "linkedin" %}{% assign label = "LinkedIn" %}{% elsif link contains "instagram" %}{% assign label = "Instagram" %}{% elsif link contains "t.me" %}{% assign label = "Telegram" %}{% else %}{% assign label = link %}{% endif %}
+      <a href="{{ link }}">{{ label }}</a>
+      {% endfor %}
+      <a href="mailto:{{ site.author.email }}">Email</a>
+      <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    </p>
+    <p class="footer-small">© {{ site.time | date: "%Y" }} · Built with Jekyll, hosted on GitHub Pages.</p>
+  </div>
+</footer>

@@ -1,0 +1,39 @@
+---
+title: The Gatekeeper
+permalink: /secret-ctf-portal/gatekeeper/
+slug_id: gatekeeper
+order: 2
+track: Web
+difficulty: Easy
+flag_hash: 402e4b31e094a2908aee68f03eafa2de2dfcbad91edf9978ef9f9d0667bce9ef
+hints:
+  - Where does this login form check your password? On a server far away, or right here in your browser?
+  - View the page source and look for the `<script>` near the login box. The username and password are written right there.
+learned: |
+  This login was checked by **JavaScript running in your browser**. Anything your browser runs, you can read. So the "secret" password was never secret.
+real_world: |
+  "Never trust the client" is a golden rule of security. Real logins must be checked on the **server**. Pentesters often find apps that only check things in the browser, and can skip them entirely.
+---
+<p>Only crew members with the right password can enter mission control. The login box below is "totally secure", says the developer.</p>
+<form class="mini-form" id="gate">
+  <label for="u">Username</label><input id="u" autocomplete="off">
+  <label for="p">Password</label><input id="p" type="password" autocomplete="off">
+  <button class="btn primary" type="submit">Log in</button>
+  <p id="gate-msg" class="flag-result" role="status"></p>
+</form>
+<script>
+  // Crew login. Checked here so we don't need a server. What could go wrong?
+  var CREW_USER = "astronaut";
+  var CREW_PASS = "launch2026";
+  document.getElementById('gate').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = document.getElementById('gate-msg');
+    if (document.getElementById('u').value === CREW_USER && document.getElementById('p').value === CREW_PASS) {
+      msg.className = 'flag-result ok';
+      msg.textContent = 'Welcome aboard! Your flag: ' + atob('Q1RGe25ldmVyX3RydXN0X3RoZV9jbGllbnR9');
+    } else {
+      msg.className = 'flag-result bad';
+      msg.textContent = 'Access denied.';
+    }
+  });
+</script>

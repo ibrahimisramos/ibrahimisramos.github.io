@@ -1,0 +1,39 @@
+---
+title: Save File
+permalink: /secret-ctf-portal/save-file/
+slug_id: save-file
+order: 4
+track: Web
+difficulty: Medium
+flag_hash: 8a4fa577193134439e61ba4464c31f1b354db231080e1b0ce613e0f3b476dd40
+hints:
+  - Like a video game, this page saves your progress somewhere in your browser. Where?
+  - Press `F12` → **Application** (or **Storage**) → **Local Storage**. Find `launchpad-game`, change the level to `99`, and refresh the page.
+learned: |
+  **Local storage** is like a notebook a website keeps in your browser. It's handy for saving settings, but *you* control that notebook. Here the game trusted your saved level, so you could just edit it.
+real_world: |
+  Games and apps that keep scores, coins or unlocks only on your device are easy to cheat. Security testers check whether important data is stored where users can tamper with it.
+---
+<p>Welcome to <strong>Astro Trainer</strong>. Reach <strong>level 99</strong> to unlock the commander's badge. Each training session gives you +1 level... but you can only train 3 times a day.</p>
+<div class="terminal" id="game"></div>
+<p><button class="btn primary" type="button" id="train">Train (+1 level)</button></p>
+<script>
+  var KEY = 'launchpad-game';
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY)) || { player: 'cadet', level: 1, trainsLeft: 3 }; }
+    catch (e) { return { player: 'cadet', level: 1, trainsLeft: 3 }; }
+  }
+  function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function render() {
+    var s = load();
+    var out = 'Player: ' + s.player + '\nLevel: ' + s.level + '\nTraining sessions left today: ' + s.trainsLeft;
+    if (Number(s.level) >= 99) out += '\n\n🏅 Commander badge unlocked: ' + atob('Q1RGe2xvY2FsX3N0b3JhZ2VfaXNfZWRpdGFibGV9');
+    var g = document.getElementById('game'); g.textContent = out; g.style.whiteSpace = 'pre-wrap';
+  }
+  document.getElementById('train').addEventListener('click', function () {
+    var s = load();
+    if (s.trainsLeft > 0) { s.level = Number(s.level) + 1; s.trainsLeft -= 1; }
+    save(s); render();
+  });
+  save(load()); render();
+</script>

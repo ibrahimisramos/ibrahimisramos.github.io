@@ -1,0 +1,86 @@
+professional:
+  - role: Cyber Security Consultant
+    org: Vantage Point Security
+    dates: Feb 2025 – Present
+    points:
+      - Delivered 40+ security assessments across web applications, mobile apps, and APIs for clients including major banks, identifying critical vulnerabilities such as IDORs, SSRF, CSRF, and authentication bypasses
+      - Performed mobile application security testing, including bypassing RASP and anti-tampering controls (Frida detection, SSL pinning) on iOS/Android banking applications
+      - Built a custom Burp Suite extension to decrypt 3DES/AES-GCM end-to-end encrypted traffic for a banking application assessment, and a custom JOSE fuzzing framework for a payment gateway engagement
+      - Independently discovered and responsibly disclosed a systemic IDOR vulnerability affecting all major resource controllers in an open-source CRM platform
+      - Assisted in Red Team preparation, including OSINT gathering and phishing email crafting
+  - role: Data Protection and Governance Intern
+    org: Straits Interactive
+    dates: May 2022 – Aug 2022
+    points:
+      - Implemented a search function of Data Privacy research inventory in Django
+      - Facilitated decision-making of Capabara, a Capability Management System, through market pricing research of SaaS products, presented to senior management
+      - Devised Python automation to create CIS Benchmarks templates for Capabara, increasing efficiency by over 50%
+  - role: Cyber Security Analyst
+    org: Ministry of Home Affairs Security Operations Centre
+    dates: Jan 2019 – Aug 2020
+    points:
+      - Led a team of Tier 1 Operators in monitoring, analysing, and responding to security events as concurrent Tier 1 and Tier 2 Security Analyst
+      - Devised scripts to automate daily tasks in JavaScript and VBA, increasing productivity by over 50%
+      - Managed administrative and welfare matters as NSF-in-Charge of Administration & Welfare
+      - Organised activities for MHA NSF as Department Liaison Officer, increasing visibility, outreach and participation many times over
+  - role: SOC Intern
+    org: Cyber Security Agency of Singapore (CSA) National Cyber Threat Monitoring Centre
+    dates: Nov 2017 – Feb 2018
+    points:
+      - Devised and deployed automation for the Cyber Security Operations Centre to increase efficiency and effectiveness
+      - Evaluated the proof of concept of a new SIEM product for use in the SOC and presented it to the SOC team
+      - Proposed and developed scripts to speed up gathering of open-source intelligence for department use
+      - Emceed the Chinese New Year celebration attended by the CE, using Mandarin greetings
+
+education:
+  - role: Bachelor's in Information Security + Minor in Science, Technology and Society & University Scholars Programme
+    org: National University of Singapore
+    dates: 2020 – 2024
+    summary: Part of an interdisciplinary programme to hone my critical thinking and writing skills, awarded IMDA Singapore Digital Scholarship (Cyber Security).
+    points:
+      - IMDA SG Digital Scholarship
+      - NUSC Honour Roll
+      - Focus on Data Privacy and Information Security Management
+  - role: Diploma in Cyber Security and Forensics
+    org: Nanyang Polytechnic
+    dates: 2015 – 2018
+    points:
+      - IMDA iPoly Scholarship
+      - Cyber Defenders Discovery Camp 2016 (6th of 80 teams, Silver), Netriders 2016 3rd in Singapore (CCENT track), CrossCTF 2017 5th place
+      - Vice-President of NYP Mentoring Club
+      - Specialisation in Cyber Security Operations and Intelligence, top 15% of cohort
+
+leadership:
+  - role: Volunteer, BizCom track
+    org: SINCON 2026
+    dates: 2026
+  - role: Volunteer + Volunteer Coordinator (Open Day)
+    org: The Astronauts Collective
+    dates: Mar 2026 – Present
+    points:
+      - Lead outreach to engage and recruit prospective volunteers at Open Day events
+  - role: Youth Guide Associate
+    org: The Astronauts Collective
+    dates: Jul 2021 – May 2024
+    points:
+      - Facilitated 20 career exploration programmes with primary and secondary school students, virtually and in person
+      - Mentored youth under the Polytechnic and ITE Apprenticeship programme, tailoring recommendations to each mentee
+  - role: Residential Assistant
+    org: NUS College
+    dates: Jul 2022 – May 2024
+    points:
+      - Fostered resident bonding for over 100 residents through floor and neighbourhood cohesion events
+      - Responded to residents' queries, worries and emergencies with practical and emotional support
+      - Improved daily Halal food options as part of the Dining Hall Committee
+  - role: Vice-President
+    org: Facilitators@NUS
+    dates: May 2022 – May 2023
+    points:
+      - Established opportunities at 5 external organisations for members to facilitate life-skills programmes at 30 primary and secondary schools
+      - Set a new direction for the club by building self-awareness into activities
+      - Designed new Team Dynamics training material with a co-lead for 20 NUS students across 6 faculties
+  - role: USP/NUSC and Computing Ambassador
+    org: NUS College and NUS School of Computing
+    dates: May 2022 – May 2023
+    points:
+      - Ran 30+ outreach events and school tours for prospective NUSC and NUS Computing students

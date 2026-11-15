@@ -1,0 +1,18 @@
+---
+layout: default
+---
+{% assign cat = page.categories | first %}
+{% assign meta = site.post_categories[cat] %}
+<article class="wrap article">
+  <header class="article-head">
+    <p class="kicker"><a href="{{ '/blog/' | relative_url }}?c={{ cat }}">{{ meta.label | default: cat }}</a> · <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    {% include tags.html tags=page.tags %}
+  </header>
+  {% if page.cover %}<img class="article-cover" src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}">{% endif %}
+  {{ content }}
+  <footer class="article-foot">
+    <a href="{{ '/blog/' | relative_url }}">← All posts</a>
+  </footer>
+</article>

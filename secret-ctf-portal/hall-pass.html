@@ -1,0 +1,36 @@
+---
+title: Hall Pass
+permalink: /secret-ctf-portal/hall-pass/
+slug_id: hall-pass
+order: 3
+track: Web
+difficulty: Medium
+flag_hash: 43d735a6fdfffcf36782cc671e81d633337d11c7c82a3a2ff6791d0aeb1c93f3
+hints:
+  - Websites remember who you are using small pieces of text called **cookies**. This page gave you one.
+  - Press `F12`, open the **Application** tab (Chrome/Edge) or **Storage** tab (Firefox), then **Cookies**. What happens if you change the value and refresh?
+learned: |
+  A **cookie** is a small piece of text a website stores in your browser. You can see and edit it with Developer Tools. This page trusted the cookie `role=student` to decide what you could see, so changing it to `admin` gave you admin access.
+real_world: |
+  Real websites use cookies to keep you logged in. If a site stores something like your role or user ID in a cookie *without protecting it*, attackers can change it. Testing this is a standard part of every web pentest.
+---
+<p>The staff room has a secret notice board, but only <strong>admins</strong> can read it. You've been given a hall pass.</p>
+<div class="terminal" id="pass">Checking your hall pass...</div>
+<script>
+  if (!/(^|; )role=/.test(document.cookie)) {
+    document.cookie = 'role=student; path=/secret-ctf-portal/; SameSite=Lax';
+  }
+  // A student may edit the cookie or add a second one, so look at every role= cookie.
+  var roles = document.cookie.split('; ').filter(function (c) { return c.indexOf('role=') === 0; }).map(function (c) {
+    var v = c.slice(5);
+    try { return decodeURIComponent(v).trim(); } catch (e) { return v.trim(); }
+  });
+  var role = roles.indexOf('admin') !== -1 ? 'admin' : (roles[0] || 'student');
+  var box = document.getElementById('pass');
+  if (role === 'admin') {
+    box.textContent = 'Access level: admin\nNotice board: ' + atob('Q1RGe2Nvb2tpZXNfYXJlX2p1c3RfdGV4dH0=');
+  } else {
+    box.textContent = 'Access level: ' + role + '\nSorry, the notice board is for admins only.';
+  }
+  box.style.whiteSpace = 'pre-wrap';
+</script>

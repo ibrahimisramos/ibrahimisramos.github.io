@@ -1,0 +1,41 @@
+---
+title: Notes for teachers & volunteers
+permalink: /secret-ctf-portal/teachers/
+lede: A beginner CTF for secondary school students. Everything runs in a web browser; nothing to install.
+---
+<h2>Before the session</h2>
+<ul>
+  <li>Any laptop with Chrome, Edge or Firefox works. School-managed Chromebooks often block Developer Tools (<kbd>F12</kbd>), and that policy usually blocks <code>view-source:</code> too, so test one device first. On a locked-down device, challenges 5, 6, 7 and 8 still work (address bar, CyberChef and reading the site). Challenges 1 and 2 need view-source, and 3 and 4 need DevTools.</li>
+  <li>Students need the portal link (or let them hunt for it from the home page: challenge zero is finding it through <code>robots.txt</code>).</li>
+  <li>Progress is saved per browser, so students should use the same device throughout.</li>
+</ul>
+
+<h2>Challenges and what they teach</h2>
+<table>
+  <thead><tr><th>#</th><th>Challenge</th><th>Skill</th><th>Tool</th></tr></thead>
+  <tbody>
+    <tr><td>0</td><td>Find the portal</td><td>robots.txt, hidden pages</td><td>View source</td></tr>
+    <tr><td>1</td><td>Behind the Curtain</td><td>HTML comments</td><td>View source</td></tr>
+    <tr><td>2</td><td>The Gatekeeper</td><td>Client-side checks</td><td>View source</td></tr>
+    <tr><td>3</td><td>Hall Pass</td><td>Cookie tampering</td><td>DevTools → Application</td></tr>
+    <tr><td>4</td><td>Save File</td><td>Local storage tampering</td><td>DevTools → Application</td></tr>
+    <tr><td>5</td><td>Debug Mode</td><td>URL parameters</td><td>Address bar</td></tr>
+    <tr><td>6</td><td>Layers</td><td>Base64 & ROT13</td><td>CyberChef</td></tr>
+    <tr><td>7</td><td>Caesar's Postcard</td><td>Caesar cipher, brute force</td><td>CyberChef</td></tr>
+    <tr><td>8</td><td>Who Is Ibrahim?</td><td>OSINT</td><td>Reading the site</td></tr>
+    <tr><td>9</td><td>Postcard Metadata</td><td>EXIF metadata</td><td>CyberChef</td></tr>
+  </tbody>
+</table>
+
+<h2>Suggested 60-minute flow</h2>
+<ol>
+  <li><strong>10 min:</strong> What is a hacker? Ethical hacking vs crime, and why permission matters.</li>
+  <li><strong>5 min:</strong> Demo challenge 1 together on the projector.</li>
+  <li><strong>35 min:</strong> Students work in pairs. Encourage hints before asking for help.</li>
+  <li><strong>10 min:</strong> Debrief: which challenge surprised them, and the "real jobs" sections.</li>
+</ol>
+
+<h2>An important message for students</h2>
+<p>These skills are only OK to use on systems you have <strong>permission</strong> to test, like this one. Trying them on other websites without permission is illegal in Singapore under the Computer Misuse Act. If they enjoyed this, point them to legal practice platforms such as <a href="https://picoctf.org/">picoCTF</a>, which was built for school students.</p>
+
+<p>Need the answers, or want to run a session together? <a href="mailto:{{ site.author.email }}">Email me</a>.</p>

@@ -1,0 +1,24 @@
+---
+title: Welcome to the Launchpad
+lede: You found the hidden portal. Nice work, that was challenge zero.
+---
+<p>This is a beginner capture-the-flag (CTF). Each challenge hides a <strong>flag</strong> that looks like <code>CTF{something_here}</code>. Find it, paste it in, and you'll unlock a short lesson on what you just did.</p>
+<p>Everything works in your browser. The tools you'll need:</p>
+<ul>
+  <li><strong>View source</strong>: right-click a page → "View page source" (or <kbd>Ctrl</kbd>+<kbd>U</kbd>)</li>
+  <li><strong>Developer Tools</strong>: press <kbd>F12</kbd> (or right-click → "Inspect")</li>
+  <li><strong><a href="https://gchq.github.io/CyberChef/">CyberChef</a></strong>: a free website for decoding and analysing data</li>
+</ul>
+<p class="progress" id="ctf-progress"></p>
+
+{% assign challenges = site.pages | where_exp: "p", "p.order" | sort: "order" %}
+<ol class="challenge-list">
+  {% for c in challenges %}
+  <li><a href="{{ c.url | relative_url }}">
+    <span><span class="ch-meta">{{ c.order }} · {{ c.track }} · {{ c.difficulty }}</span><br><span class="ch-title">{{ c.title }}</span></span>
+    <span class="ch-done" data-solved-mark="{{ c.slug_id }}"></span>
+  </a></li>
+  {% endfor %}
+</ol>
+
+<p><small>Please don't share flags. Share the portal instead and let your friends find it themselves.</small></p>

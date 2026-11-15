@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="wrap article travel-article">
+  <header class="article-head">
+    <p class="kicker"><a href="{{ '/blog/' | relative_url }}?c=travel">Travel</a> · {{ page.location }}</p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+  </header>
+  {% if page.cover and page.show_cover != false %}<img class="article-cover" src="{{ page.cover | relative_url }}" alt="{{ page.cover_alt }}">{% endif %}
+  <aside class="fact-box trip" aria-label="Trip details">
+    <dl>
+      <div><dt>Where</dt><dd>{{ page.location }}</dd></div>
+      <div><dt>When</dt><dd>{{ page.trip_date | default: page.date | date: "%B %Y" }}</dd></div>
+      {% if page.duration %}<div><dt>How long</dt><dd>{{ page.duration }}</dd></div>{% endif %}
+      {% if page.trip_type %}<div><dt>Trip type</dt><dd>{{ page.trip_type }}</dd></div>{% endif %}
+      {% if page.budget %}<div><dt>Budget</dt><dd>{{ page.budget }}</dd></div>{% endif %}
+    </dl>
+  </aside>
+  {{ content }}
+  {% include tags.html tags=page.tags %}
+  <footer class="article-foot"><a href="{{ '/blog/' | relative_url }}?c=travel">← All travel posts</a></footer>
+</article>

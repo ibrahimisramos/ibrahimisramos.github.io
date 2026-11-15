@@ -1,0 +1,21 @@
+---
+redirect_from: /travel-post.html
+layout: page
+title: Blog
+kicker: Writing
+lede: Cert reviews, resource lists, lab logs, talks and travel stories.
+scripts: [/assets/js/filter.js]
+---
+<div class="chips" role="group" aria-label="Filter posts">
+  <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+  <button class="chip" type="button" data-filter="cyber" aria-pressed="false">All cyber</button>
+  {% for c in site.post_categories %}{% assign key = c[0] %}{% if site.categories[key] %}<button class="chip" type="button" data-filter="{{ c[0] }}" aria-pressed="false">{{ c[1].label }}</button>{% endif %}{% endfor %}
+</div>
+{% if site.posts.size > 0 %}
+<div class="post-grid" id="posts" data-filter-grid>
+  {% for post in site.posts %}{% include post-card.html post=post %}{% endfor %}
+</div>
+<p class="empty" id="no-match" hidden>Nothing here yet in this category.</p>
+{% else %}
+<p class="empty">First posts are on the way.</p>
+{% endif %}

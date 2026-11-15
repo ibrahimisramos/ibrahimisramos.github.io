@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{% assign portal = "/secret-ctf-portal/" %}
+{% assign base_href = 'href="' | append: site.baseurl | append: '/' %}
+<div class="wrap page">
+  <p class="ctf-banner">~/launchpad $ {% if page.slug_id %}cat {{ page.slug_id }}.txt{% else %}ls{% endif %}</p>
+  <header class="page-head">
+    {% if page.track %}<p class="kicker">{{ page.track }} · {{ page.difficulty }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.lede %}<p class="lede">{{ page.lede }}</p>{% endif %}
+  </header>
+
+  <div class="prose">
+    {{ content }}
+
+    {% if page.flag_hash %}
+      {% if page.hints %}
+      <div class="hints">
+        <h2>Stuck?</h2>
+        {% for h in page.hints %}<details><summary>Hint {{ forloop.index }}</summary>{{ h | markdownify | replace: 'href="/', base_href }}</details>{% endfor %}
+      </div>
+      {% endif %}
+
+      <form class="flag-form" data-ctf-flag data-hash="{{ page.flag_hash }}" data-slug="{{ page.slug_id }}" autocomplete="off">
+        <label class="sr-only" for="flag">Flag</label>
+        <input id="flag" name="flag" placeholder="CTF{...}" spellcheck="false" required>
+        <button class="btn primary" type="submit">Submit flag</button>
+      </form>
+      <p class="flag-result" data-ctf-result role="status" aria-live="polite"></p>
+
+      <section class="debrief" hidden>
+        <p class="kicker">Mission complete</p>
+        <h2>What you just learned</h2>
+        {{ page.learned | markdownify }}
+        <h2>Where this shows up in real jobs</h2>
+        {{ page.real_world | markdownify }}
+        <p><a href="{{ portal | relative_url }}">← Back to the launchpad</a></p>
+      </section>
+    {% endif %}
+  </div>
+  {% unless page.url == portal %}<p class="article-foot"><a href="{{ portal | relative_url }}">← All challenges</a></p>{% endunless %}
+</div>
+<script src="{{ '/assets/js/ctf.js' | relative_url }}" defer></script>

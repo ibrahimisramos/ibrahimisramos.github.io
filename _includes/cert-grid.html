@@ -1,0 +1,16 @@
+{% comment %}Certification grid shared by the home and Work pages. "My review" only appears for a published review (not a draft).{% endcomment %}
+{% assign published = site.posts | where_exp: "p", "p.draft != true" %}
+<div class="cert-grid">
+  {% for c in site.data.certs %}
+  {% assign review = published | where: "cert", c.id | first %}
+  {% assign iss = c.issuer | downcase %}
+  {% if c.status != "earned" %}{% assign cls = "pending" %}{% elsif iss contains "offsec" %}{% assign cls = "offsec" %}{% elsif iss contains "portswigger" %}{% assign cls = "portswigger" %}{% elsif iss contains "crest" %}{% assign cls = "crest" %}{% elsif iss contains "security blue" %}{% assign cls = "sbt" %}{% elsif iss contains "iapp" %}{% assign cls = "iapp" %}{% elsif iss contains "google" %}{% assign cls = "google" %}{% elsif iss contains "pwned" %}{% assign cls = "pwned" %}{% else %}{% assign cls = "" %}{% endif %}
+  <div class="cert">
+    <span class="badge {{ cls }}" aria-hidden="true">{{ c.name | replace: "Google ", "" }}</span>
+    <div>
+      {% include cert-card.html cert=c issuer=true %}
+      <small>{% if c.verify %}<a href="{{ c.verify }}">Verify ↗</a>{% endif %}{% if review %} · <a href="{{ review.url | relative_url }}">My review</a>{% endif %}</small>
+    </div>
+  </div>
+  {% endfor %}
+</div>

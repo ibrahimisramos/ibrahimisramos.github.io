@@ -1,0 +1,36 @@
+---
+layout: default
+---
+{% assign cert = site.data.certs | where: "id", page.cert | first %}
+<article class="wrap article">
+  <header class="article-head">
+    <p class="kicker"><a href="{{ '/blog/' | relative_url }}?c=certs">Cert review</a> · <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time></p>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+  </header>
+
+  <aside class="fact-box" aria-label="At a glance">
+    {% if cert %}<p class="fact-title">{{ cert.full }} <span>({{ cert.name }}, {{ cert.issuer }})</span></p>{% endif %}
+    <dl>
+      {% if page.cost %}<div><dt>Cost</dt><dd>{{ page.cost }}</dd></div>{% endif %}
+      {% if page.prep_time %}<div><dt>Prep time</dt><dd>{{ page.prep_time }}</dd></div>{% endif %}
+      {% if page.exam_format %}<div><dt>Exam</dt><dd>{{ page.exam_format }}</dd></div>{% endif %}
+      {% if page.difficulty %}<div><dt>Difficulty</dt><dd><span class="dots" aria-label="{{ page.difficulty }} out of 5">{% for i in (1..5) %}<i{% if i <= page.difficulty %} class="on"{% endif %}></i>{% endfor %}</span></dd></div>{% endif %}
+      {% if page.would_recommend %}<div><dt>Recommend?</dt><dd>{{ page.would_recommend }}</dd></div>{% endif %}
+    </dl>
+    {% if cert.verify %}<p class="fact-verify"><a href="{{ cert.verify }}">Verify my credential ↗</a></p>{% endif %}
+  </aside>
+
+  {{ content }}
+
+  {% if page.resources %}
+  <section class="resources">
+    <h2>Resources I used</h2>
+    <ul>
+      {% for r in page.resources %}<li><a href="{{ r.url }}">{{ r.name }}</a>{% if r.note %}<span> · {{ r.note }}</span>{% endif %}</li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  <footer class="article-foot"><a href="{{ '/blog/' | relative_url }}?c=certs">← All cert reviews</a></footer>
+</article>

@@ -1,0 +1,49 @@
+# One entry per cert. A review post links itself by setting `cert: <id>` in its front matter.
+- id: oscp
+  name: OSCP+
+  full: Offensive Security Certified Professional+
+  issuer: OffSec
+  verify: https://credentials.offsec.com/3ad68a3e-8c9d-4cb9-abb2-183498ab86f8
+  status: earned
+- id: bscp
+  name: BSCP
+  full: Burp Suite Certified Practitioner
+  issuer: PortSwigger
+  verify: https://portswigger.net/web-security/e/c/330b53a2f746c16f
+  status: earned
+- id: crt
+  name: CRT
+  full: CREST Registered Penetration Tester
+  issuer: CREST
+  verify: https://www.credly.com/earner/earned/badge/aaddc7ec-9a6f-438e-b47a-811a88ce4de4
+  status: earned
+- id: btl1
+  name: BTL1
+  full: Blue Team Level 1
+  issuer: Security Blue Team
+  verify: https://www.credly.com/earner/earned/badge/f7875049-b56d-4524-a340-78c3d3e7e8ec
+  status: earned
+- id: cipt
+  name: CIPT
+  full: Certified Information Privacy Technologist
+  issuer: IAPP
+  verify: https://www.credential.net/1bc245e4-6f4c-4c4c-8921-b29d8f2c015e
+  status: earned
+- id: gcp-ace
+  name: Google ACE
+  full: Associate Cloud Engineer
+  issuer: Google Cloud
+  verify: https://www.credly.com/badges/bc9a0c50-e22a-4ca6-b359-2dc7b41de730
+  status: earned
+- id: acrtp
+  name: ACRTP
+  full: Amazon Cloud Red Team Professional
+  issuer: Pwned Labs
+  verify: https://www.credly.com/badges/bc873748-a898-499f-97e9-932e2a20c728
+  status: earned
+- id: caisp
+  name: CAISP
+  full: Certified AI Security Professional
+  issuer: Practical DevSecOps
+  verify: https://www.practical-devsecops.com/certified-ai-security-professional/
+  status: in-progress

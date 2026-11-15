@@ -1,0 +1,7 @@
+<div class="card work-card{% if include.side %} {{ include.side }}{% endif %}">
+  <div class="work-card-top"><span class="pill">{{ include.item.tag }}</span>{% if include.item.dates %}<span class="when">{{ include.item.dates }}</span>{% endif %}</div>
+  <h3>{{ include.item.title }}</h3>
+  <p>{{ include.item.summary }}</p>
+  {% if include.item.points %}<ul class="ticks">{% for pt in include.item.points %}<li>{{ pt }}</li>{% endfor %}</ul>{% endif %}
+  {% if include.item.links %}<div class="links">{% for l in include.item.links %}<a class="link-btn" href="{{ l.url | relative_url }}"><i class="bi bi-file-earmark-text" aria-hidden="true"></i>{{ l.label }}</a>{% endfor %}</div>{% endif %}
+</div>

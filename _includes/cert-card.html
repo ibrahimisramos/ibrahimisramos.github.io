@@ -1,0 +1,4 @@
+{% assign c = include.cert %}
+<span class="status {{ c.status }}">{% if c.status == "earned" %}✓ Earned{% else %}In progress{% endif %}</span>
+<strong>{{ c.name }}</strong>
+<small>{{ c.full }}{% if include.issuer %} · {{ c.issuer }}{% endif %}</small>

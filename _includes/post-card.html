@@ -1,0 +1,10 @@
+{% assign cat = include.post.categories | first %}
+{% assign meta = site.post_categories[cat] %}
+<article class="post-card" data-category="{{ cat }}" data-group="{% if cat == 'travel' %}travel{% else %}cyber{% endif %}">
+  <a class="post-card-link" href="{{ include.post.url | relative_url }}">
+    {% if include.post.cover %}<img class="post-card-cover" src="{{ include.post.cover | relative_url }}" alt="" loading="lazy">{% endif %}
+    <p class="kicker">{{ meta.label | default: cat }} · <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%b %Y" }}</time>{% if include.post.location %} · {{ include.post.location }}{% endif %}</p>
+    <h3>{{ include.post.title }}</h3>
+    <p class="post-card-excerpt">{{ include.post.excerpt | strip_html | truncatewords: 28 }}</p>
+  </a>
+</article>
