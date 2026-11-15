@@ -7,7 +7,7 @@ scripts: [/assets/js/hero.js, /assets/js/filter.js]
 <!-- psst, curious one. Robots get told where NOT to go. Maybe you should read what they're told. -->
 <section class="hero-slides" aria-label="Welcome">
   {% for s in site.data.hero_slides %}
-  <div class="slide{% if forloop.first %} is-active{% endif %}" data-role="{{ s.role }}" style="background-image: url('{{ s.src | relative_url }}'){% if s.pos %}; --pos: {{ s.pos }}{% endif %}{% if s.pos_mobile %}; --pos-m: {{ s.pos_mobile }}{% endif %}" role="img" aria-label="{{ s.alt }}"></div>
+  <div class="slide{% if forloop.first %} is-active{% endif %}" data-role="{{ s.role }}" style="--img: url('{{ s.src | relative_url }}'){% if s.src_mobile %}; --img-m: url('{{ s.src_mobile | relative_url }}'){% endif %}{% if s.pos %}; --pos: {{ s.pos }}{% endif %}{% if s.pos_mobile %}; --pos-m: {{ s.pos_mobile }}{% endif %}" role="img" aria-label="{{ s.alt }}"></div>
   {% endfor %}
   <div class="hero-text">
     <h1>Ibrahim Sharul</h1>
