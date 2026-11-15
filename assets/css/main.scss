@@ -91,6 +91,11 @@ th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--
 @media (max-width: 600px) { .hero-slides .slide { background-image: var(--img-m, var(--img)); background-position: var(--pos-m, var(--pos, center)); } }
 .hero-slides .slide.is-active { opacity: 1; }
 .hero-slides::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(5, 13, 24, .38) 0%, rgba(5, 13, 24, .12) 60%, rgba(5, 13, 24, 0) 100%); }
+@media (max-width: 600px) {
+  /* On phones the photo is tall, so move the text to the bottom and keep faces clear */
+  .hero-slides { align-items: flex-end; padding-bottom: 9vh; }
+  .hero-slides::after { background: linear-gradient(to top, rgba(5, 13, 24, .65) 0%, rgba(5, 13, 24, .25) 40%, rgba(5, 13, 24, 0) 65%); }
+}
 .hero-text { position: relative; z-index: 1; padding: 0 16px; text-shadow: 0 2px 14px rgba(0, 0, 0, .45); }
 .hero-text h1 { font: 700 clamp(2.4rem, 7vw, 4rem) "Poppins", var(--serif); color: #fff; margin: 0 0 .3rem; }
 .hero-text p { font-size: clamp(1.1rem, 3vw, 1.6rem); margin: 0; }
